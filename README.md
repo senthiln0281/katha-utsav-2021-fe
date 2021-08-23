@@ -6,3 +6,12 @@ https://www.figma.com/proto/A3B6c6710hpLvDUNvDrJcc/Katha-Utsav?node-id=1%3A2&sta
 
 ## Architecture View
 ![Architecture Diagram](./Katha_Utsav_Architecture.png)
+
+# Pre-requisites:
+  *  Node v14.17.5
+
+# Development
+  * source setenv.dev.sh
+  * npm run start:server
+  * npm run start:client
+
