@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const srcPath = path.join(__dirname, '../src/client');
 const publicPath = '/';
@@ -12,6 +13,7 @@ module.exports = {
   entry: [
     '@babel/polyfill',
     path.join(__dirname, '../src/client/index'),
+    path.join(__dirname, '../src/client/styles/main.scss'),
   ], output: {
     path: path.join(__dirname, '../dist'),
     filename: 'static/[name].[hash].js',
@@ -83,18 +85,8 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/i,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'css-loader',
-        ],
+        test: /\.(scss|css)$/,
+        use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
         test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
@@ -111,6 +103,10 @@ module.exports = {
         to: path.join(__dirname, '../dist/'),
       },
     ]}),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       title: 'katha-utsav-2021-fe',

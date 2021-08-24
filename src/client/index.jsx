@@ -6,6 +6,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import createSagaMiddleware from "redux-saga";
 import {watchHelloCall} from './store/sagas/index';
 import RootReducer from './store/reducers/index';
+import './styles/main.scss';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(RootReducer, composeEnhancers(applyMiddleware(sagaMiddleware)));
