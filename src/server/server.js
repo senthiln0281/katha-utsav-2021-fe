@@ -5,7 +5,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const publicPath = path.resolve(__dirname, 'public');
-const routes = require('./routes');
 
 const port = process.env.PORT || 9000;
 

@@ -10,7 +10,6 @@ import {
 const AppContainer = () => (
         <Router>
                 <Switch>
-                <Route exact path="/login" render={() => <div> Welcome To payment Page </div>} />
 
                         <Route exact path="/payment" render={() => <div> Welcome To payment Page </div>} />
                         <Route exact path="/" render={() => <div> Welcome To Home Page </div>} />
