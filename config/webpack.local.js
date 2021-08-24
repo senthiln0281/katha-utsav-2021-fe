@@ -1,7 +1,7 @@
 const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.common');
 
-const port = 2600;
+const port = 8080;
 
 const config = merge(
   baseConfig,
@@ -15,7 +15,7 @@ const config = merge(
       hot: true,
       port,
       proxy: {
-        '*': 'http://localhost:2500',
+        "/api/*": "http://localhost:8000",
       },
       static: {
       publicPath: '/',
