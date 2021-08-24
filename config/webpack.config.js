@@ -3,7 +3,7 @@ module.exports = (env) => {
       process.env.NODE_ENV = env.NODE_ENV;
       return require('./webpack.production');
     }
-    console.log('------- ',env);
+    console.log('------- ',process.env.NODE_ENV);
     return require('./webpack.local');
   };
   

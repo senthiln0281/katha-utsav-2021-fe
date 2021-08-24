@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const srcPath = path.join(__dirname, '../src/client');
 const publicPath = '/';
@@ -101,6 +103,14 @@ module.exports = {
     ],
   },
   plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+
+      {
+        from: path.join(__dirname, '../public/'),
+        to: path.join(__dirname, '../dist/'),
+      },
+    ]}),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       title: 'katha-utsav-2021-fe',
