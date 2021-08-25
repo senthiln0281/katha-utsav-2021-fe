@@ -4,7 +4,7 @@ import HeroImg from '../../assets/images/hero-bg.png';
 
 const BannerComponent = () => {
     return(
-        <>
+        <React.Fragment>
             <div className='container'>
                 <div className='banner-wrap'>
                     <div className='banner-text'>
@@ -18,7 +18,7 @@ const BannerComponent = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </React.Fragment>
     )
 }
 

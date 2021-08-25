@@ -4,7 +4,7 @@ import Logo from '../../assets/images/katha-logo.png';
 
 const HeaderComponent = () => {
     return (
-        <>
+        <React.Fragment>
             <header>
                 <div className='container'>
                     <div className='header-wrap'>
@@ -23,7 +23,7 @@ const HeaderComponent = () => {
                 </div>
             </header>
             <BannerComponent />
-        </>
+        </React.Fragment>
     )
 }
 
