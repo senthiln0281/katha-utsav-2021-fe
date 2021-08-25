@@ -1,0 +1,33 @@
+.banner-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 1rem 0;
+
+  .banner-text {
+    flex: 1;
+    h1 {
+      color: #98248D;
+      font-size: 4rem;
+      font-family: 'Fredoka One';
+      margin-bottom: 0;
+    }
+
+    .story-text {
+      color: #000000;
+      font-family: 'Fredoka One';
+      font-size: 24px;
+      margin: 0.5rem 0;
+    }
+
+    .style-format {
+      color: #66645E;
+      font-size: 24px;
+    }
+  }
+  .banner-image {
+    flex: 1;
+    text-align: center;
+  }
+}

@@ -6,13 +6,16 @@ import {
         Switch,
 } from 'react-router-dom';
 
+import HeaderComponent from "../components/HeaderComponent/HeaderComponent";
+
 
 const AppContainer = () => (
-        <Router>
-                <Switch>
 
+        <Router>
+                <HeaderComponent />
+                <Switch>
                         <Route exact path="/payment" render={() => <div> Welcome To payment Page </div>} />
-                        <Route exact path="/" render={() => <div> Welcome To Home Page </div>} />
+                        <Route exact path="/" render={() => <div> </div>} />
                 </Switch>
         </Router>
 );

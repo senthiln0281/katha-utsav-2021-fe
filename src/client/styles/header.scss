@@ -1,0 +1,29 @@
+.header-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 1rem 0;
+
+  .logo {
+    align-self: flex-start;
+    flex: 1;
+  }
+  .menus {
+    align-self: flex-end;
+    ul {
+      li {
+        display: inline-block;
+        padding: 0 1.5rem;
+        a {
+          color: #212832;
+          text-decoration: none;
+
+          &:hover {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+}
