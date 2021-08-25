@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
 body {
   background-color: rgba(254, 203, 5, 0.7);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins-Regular', sans-serif;
 }
 
 ul {
@@ -12,6 +11,6 @@ ul {
   list-style: none;
 }
 
-
-@import "../styles/header";
-@import "../styles/banner";
+@import '../styles/fonts';
+@import '../styles/header';
+@import '../styles/banner';

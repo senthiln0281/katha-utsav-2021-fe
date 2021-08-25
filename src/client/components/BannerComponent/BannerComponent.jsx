@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HeroImg from '../../assets/hero-bg.png';
+import HeroImg from '../../assets/images/hero-bg.png';
 
 class BannerComponent extends React.Component {
     render() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import BannerComponent from '../BannerComponent/BannerComponent';
-import Logo from "../../assets/katha-logo.png";
+import Logo from '../../assets/images/katha-logo.png';
 
 class HeaderComponent extends React.Component {
     render() {

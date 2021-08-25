@@ -15,7 +15,7 @@ const AppContainer = () => (
                 <HeaderComponent />
                 <Switch>
                         <Route exact path="/payment" render={() => <div> Welcome To payment Page </div>} />
-                        <Route exact path="/" render={() => <div> </div>} />
+                        <Route exact path="/" render={() => <div> Welcome To payment Page </div>} />
                 </Switch>
         </Router>
 );
