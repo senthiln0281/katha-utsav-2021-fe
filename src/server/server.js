@@ -5,6 +5,13 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const publicPath = path.resolve(__dirname, 'public');
+const {getData} = require('./controllers/db');
+const {pool} = require('./database/index');
+
+pool.on('error', (err) => {
+  console.error('Unexpected error on idle client', err)
+  process.exit(-1)
+})
 
 const port = process.env.PORT || 8000;
 
@@ -24,8 +31,6 @@ app.get('/api/healthy', (req, res) => {
 });
 
 const indexFile = (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'ci') ? path.resolve(__dirname, 'index.html') : path.join(__dirname, 'public', 'index.html');
-
-
 
 app.get('*',
   async (req, res) => {
