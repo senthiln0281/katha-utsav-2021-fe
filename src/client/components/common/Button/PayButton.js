@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
         },
 
         [theme.breakpoints.down("xs")]: {
-            width: 220
+            width: 260
         },
         "&:hover":{
             backgroundColor:"#9D4395"

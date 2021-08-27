@@ -35,15 +35,15 @@ const useStyles = makeStyles(theme => ({
     error: {},
     disabled: {},
     widthAndHeight: {
-
+        height: 15,
+        width: 350,
         [theme.breakpoints.down("sm")]: {
-            width: "33em"
+            width: 300
         },
+
         [theme.breakpoints.down("xs")]: {
-            width: "13em"
-        },
-
-
+            width: 230
+        }
     }
 }));
 

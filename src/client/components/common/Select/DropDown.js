@@ -1,3 +1,4 @@
+
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -37,13 +38,13 @@ const useStyles = makeStyles(theme => ({
     },
     widthAndHeight: {
         height: 15,
-        width:350,
+        width:330,
         [theme.breakpoints.down("sm")]: {
-            width: 320
+            width:280
         },
 
         [theme.breakpoints.down("xs")]: {
-            width: 180
+            width: 210
         }
       }
 }));

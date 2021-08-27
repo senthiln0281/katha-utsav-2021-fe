@@ -2,6 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 
 const IndividualRegistrationReducer = (state = {}, action) => {
+    console.log('action', action);
     switch (action.type) {
         case actionTypes.VALID_SUCCESS:
             const { name,
@@ -10,7 +11,9 @@ const IndividualRegistrationReducer = (state = {}, action) => {
                 School,
                 City,
                 Class,
-                StoryCategory } = action
+                StoryCategory,fileData } = action
+                console.log('finallog', fileData);
+                const fileInfo = {name:fileData.name}
             return {
                 ...state,
                 name,
@@ -19,7 +22,8 @@ const IndividualRegistrationReducer = (state = {}, action) => {
                 School,
                 City,
                 Class,
-                StoryCategory
+                StoryCategory,
+                fileInfo
             }
         default:
             return state;

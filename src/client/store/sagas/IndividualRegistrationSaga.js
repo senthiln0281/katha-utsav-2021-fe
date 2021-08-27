@@ -14,9 +14,10 @@ export function* ValidateIndividualRegistration(action) {
         School,
         City,
         Class,
-        StoryCategory 
+        StoryCategory ,
+        fileData
 } = action;
 
-
-yield put(actions.validateSuccess(name, emailId, phoneNumber, School, City, Class, StoryCategory));
+console.log('sagas', fileData);
+yield put(actions.validateSuccess(name, emailId, phoneNumber, School, City, Class, StoryCategory,fileData));
 }
