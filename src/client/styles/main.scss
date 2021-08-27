@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import "../../../node_modules/foundation-sites/scss/foundation";
+@import '../styles/breakpoints';
 
 body {
-  background-color: rgba(254, 203, 5, 0.7);
+  margin: 0;
   font-family: 'Poppins-Regular', sans-serif;
 }
 
@@ -11,6 +13,11 @@ ul {
   list-style: none;
 }
 
+.home-page {
+  background-color: #FFFFFF;
+}
+
 @import '../styles/fonts';
 @import '../styles/header';
 @import '../styles/banner';
+@import '../styles/timeline';

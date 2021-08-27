@@ -1,0 +1,37 @@
+@mixin breakpoint-small {
+  @include breakpoint(small up) {
+    @content;
+  }
+}
+
+@mixin breakpoint-medium-down {
+  @include breakpoint(medium down) {
+    @content;
+  }
+}
+
+@mixin breakpoint-medium-up {
+  @include breakpoint(medium up) {
+    @content;
+  }
+}
+
+@mixin breakpoint-large-down {
+  @include breakpoint(large down) {
+    @content;
+  }
+}
+
+@mixin breakpoint-large-up {
+  @include breakpoint(large up) {
+    @content;
+  }
+}
+
+@mixin breakpoint-xlarge {
+  @include breakpoint(xlarge) {
+    @content;
+  }
+}
+
+
