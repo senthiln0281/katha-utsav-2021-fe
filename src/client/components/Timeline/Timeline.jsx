@@ -6,7 +6,6 @@ import Online from '../../assets/images/timeline-online.png';
 import Poet from '../../assets/images/timeline-poet.png';
 
 const ImageWithContent = ({image, content}) => {
-    console.log('enters');
     return (
       <div className='image-with-content'>
           <img src={image} alt="" />
@@ -33,11 +32,11 @@ const Timeline = () => {
                   <div className='timeline__impact--box'>
                       <div className='timeline__impact--images'>
                           <ImageWithContent image={India} content='PAN India Participation'/>
-                          <ImageWithContent image={India} content='Master-classes by renowned poets and writers.'/>
+                          <ImageWithContent image={Poet} content='Master-classes by renowned poets and writers.'/>
                       </div>
                       <div className='timeline__impact--images'>
-                          <ImageWithContent image={India} content='Meeting with publishers and literary agents.'/>
-                          <ImageWithContent image={India} content='An opportunity to publish your work online.'/>
+                          <ImageWithContent image={Meeting} content='Meeting with publishers and literary agents.'/>
+                          <ImageWithContent image={Online} content='An opportunity to publish your work online.'/>
                       </div>
                   </div>
 

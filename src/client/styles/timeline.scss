@@ -8,15 +8,10 @@
   }
 
   h3 {
-    font-weight: 400;
     font-size: 2.625rem;
     line-height: 4rem;
 
-    @include breakpoint-medium-down {
-      text-align: center;
-    }
-
-    @include breakpoint-xlarge {
+    @include breakpoint-large-up {
       font-size: 3rem;
     }
   }
@@ -35,6 +30,12 @@
       @include breakpoint-xlarge {
         margin-right: 2.5rem;
       }
+
+      @media screen and (min-width: 1500px) {
+        width: 50%;
+        font-size: 3rem;
+        line-height: 3rem;
+      }
     }
 
     img {
@@ -47,6 +48,10 @@
 
       @include breakpoint-xlarge {
         width: 35rem;
+      }
+
+      @media screen and (min-width: 1500px) {
+        width: 70rem;
       }
 
     }
@@ -89,7 +94,7 @@
       width: 60%;
       margin-left: 2rem;
 
-      @include breakpoint (xxlarge) {
+      @media screen and (min-width: 1500px) {
         width: 30%;
         margin-left: 10rem;
       }
@@ -103,7 +108,7 @@
 
     &--images {
       display: flex;
-      justify-content: space-between;
+      //justify-content: space-between;
       margin-bottom: 1rem;
 
       @include breakpoint-medium-down {
@@ -123,7 +128,7 @@
   .image-with-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    //justify-content: space-between;
 
     @include breakpoint-large-down {
       width: 25rem;
@@ -133,6 +138,7 @@
       font-family: Poppins;
       width: 13.75rem;
       margin-left: 1rem;
+      font-size: 1.125rem;
 
       @include breakpoint-large-down {
         width: 11rem;
@@ -140,6 +146,7 @@
 
       @include breakpoint-medium-down {
         width: 100%;
+        font-size: 1.5rem;
       }
     }
   }
