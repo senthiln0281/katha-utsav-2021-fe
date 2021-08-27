@@ -4,7 +4,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
 import _ from 'lodash';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     root: {
         "& .MuiOutlinedInput-input": {
             color: "#000"
@@ -32,16 +32,28 @@ const useStyles = makeStyles({
         },
         "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
             borderColor: "purple"
+        },
+     
+    },
+    widthAndHeight: {
+        height: 15,
+        width:350,
+        [theme.breakpoints.down("sm")]: {
+            width: 300
+        },
+
+        [theme.breakpoints.down("xs")]: {
+            width: 180
         }
-    }
-});
+      }
+}));
 
 const DropDown = (props) => {
     const classes = useStyles();
     const { options, fieldName,onChangeFunc,value, isError,errorMessage } = props;
     return (
             <TextField
-                fullWidth
+                
                 className={classes.root}
                 error={false}
                 helperText={isError? errorMessage: ''}
@@ -49,6 +61,11 @@ const DropDown = (props) => {
                  onChange={e => onChangeFunc(e.target.value)}
                 variant="outlined"
                 label={fieldName}
+                InputProps={{
+                    classes: {
+                        input: classes.widthAndHeight
+                    }
+                }}
                 select
             >
                 {_.map(options, (option) => <MenuItem key={option} value={option}>{option}</MenuItem>

@@ -11,6 +11,7 @@ import CardContent from '@material-ui/core/CardContent';
 import InputField from './common/TextField/InputField';
 import DropDown from './common/Select/DropDown';
 import PaymentButton from './common/Button/PayButton';
+import { initial } from 'lodash';
 
 const useStyles = makeStyles(theme => ({
     background: {
@@ -24,18 +25,15 @@ const useStyles = makeStyles(theme => ({
     RegistrationForm: {
         color: "#66645E",
         fontWeight: "400",
-        fontSize: "1rem"
+        fontSize: "1rem",
+        [theme.breakpoints.down("sm")]: {
+            fontSize: "0.75"
+        },
     },
-    registrationCard: {
-        padding: 10,
-        width: "40%",
-        height: "100%",
-        borderRadius: "15",
-        boxShadow: theme.shadows[2],
-    },
+
     registrationDivBackground: {
         backgroundColor: '#FEDB50',
-        height: "100%",
+        height: "25vh",
         width: "100%",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -47,12 +45,27 @@ const useStyles = makeStyles(theme => ({
         "&:hover": {
             backgroundColor: "#FDF6D8"
         },
+        [theme.breakpoints.down("sm")]: {
+            width: 320
+        },
+        [theme.breakpoints.down("xs")]: {
+            width: 220
+        },
+
+    },
+    registrationCard:{
+       width: "80%"
     },
     Reset: {
         lineHeight: '24px',
         fontWeight: 'bold',
         fontSize: "0.65rem",
-
+        [theme.breakpoints.down("sm")]: {
+            width: 320
+        },
+        [theme.breakpoints.down("xs")]: {
+            width: 220
+        },
     }
 }));
 
@@ -80,7 +93,11 @@ const IndividualRegistration = (props) => {
         setStoryCategory('');
         setClassStandard('');
     }
+    const theme = useTheme();
 
+
+    const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
+    const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
     return (
         <Grid container direction="column" className={classes.background}>
             {/*---Cross Mark---*/}
@@ -93,62 +110,64 @@ const IndividualRegistration = (props) => {
             {/*---Title and subtitle---*/}
             <Grid item container alignItems="center" direction="column">
                 <Grid item>
-                    <img alt src={kathautsav} alt="title" width="168" height="90" />
+                    <img alt src={kathautsav} alt="title" width={matchesSM? 128 : 168} height="90" />
                 </Grid>
                 <Grid item>
                     <Typography gutterBottom variant="subtitle2" className={classes.RegistrationForm}>Registration Form for Students</Typography>
                 </Grid>
             </Grid>
 
-            <Grid item container alignItems="center" direction="column">
+            {/**Registration Form*/}
+            <Grid item container alignItems="center" direction="column" >
                 <Card className={classes.registrationCard}>
                     <CardContent>
-                        <Grid spacing={1} container item direction="column" style={{ textAlign: "center" }}>
-                            <Grid item>
-                                <Typography gutterBottom variant="body1" style={{ fontSize: "1rem" }} className={classes.RegistrationForm}>Student Details</Typography>
+                        <Grid spacing={1} container item  direction="column"  alignItems="center" style={{ maxWidth: "20em"}}>
+                            <Grid item style={{width: matchesXS? "220" : matchesSM? "60%" : "inherit"}}>
+                                <Typography gutterBottom variant="body1"  className={classes.RegistrationForm}>Student Details</Typography>
                             </Grid>
 
-                            <Grid item>
+                            <Grid item style={{maxWidth:"100em"}}>
                                 <InputField errorMessage='' isError={false} fieldName={"Name"} onChangeFunc={setName} value={name} />
                             </Grid>
-                            <Grid item>
+                            <Grid item style={{width: matchesXS? 220 : matchesSM? 320 : "inherit"}}>
                                 <InputField errorMessage='' isError={false} fieldName={"Email ID"} onChangeFunc={setEmailId} value={emailId} />
                             </Grid>
-                            <Grid item>
+                            <Grid item style={{width: matchesXS? 220 : matchesSM? 320 : "inherit"}}>
                                 <InputField errorMessage='' isError={false} fieldName={"Phone Number"} onChangeFunc={setPhoneNumber} value={phoneNumber} />
                             </Grid>
 
-                            <Grid item>
+                            <Grid item style={{width: matchesXS? 220 : matchesSM? 320 : "inherit"}}>
                                 <InputField errorMessage='' isError={false} fieldName={"School"} onChangeFunc={setSchool} value={school} />
                             </Grid>
 
-                            <Grid item>
+                            <Grid item style={{width: matchesXS? 220 : matchesSM? 320 : "inherit"}}>
                                 <InputField errorMessage='' isError={false} fieldName={"City"} onChangeFunc={setCity} value={city} />
                             </Grid>
 
-                            <Grid item>
+                            <Grid item style={{width: matchesXS? 220 : matchesSM? 320 : "inherit"}}>
                                 <DropDown errorMessage='' isError={false} fieldName={"Class"} options={["4 to 6", "7 to 9 ", "10 to 12"]} onChangeFunc={setClassStandard} value={classStandard} />
                             </Grid>
 
-                            <Grid item>
+                            <Grid item style={{width: matchesXS? 220 : matchesSM? 320 : "inherit"}}>
                                 <DropDown errorMessage='' isError={false} fieldName={"Story Category"} options={["Fiction", "Non-Fiction", "Poetry"]} onChangeFunc={setStoryCategory} value={storyCategory} />
                             </Grid>
 
-                            <Grid item>
+                            <Grid item style={{width: matchesXS? 220 : matchesSM? 320 : "inherit"}}>
                                 <Button className={classes.UploadFile}>Upload File</Button>
                             </Grid>
 
-                            <Grid item>
+                            <Grid item style={{width: matchesXS? 220 : matchesSM? 350 : "inherit"}}>
                                 <PaymentButton onButtonClick = {Validate} />
                             </Grid>
 
-                            <Grid item component={Button} onClick={onReset}>
+                            <Grid item component={Button} onClick={onReset} style={{width: matchesXS? 220 : "inherit"}}>
                                 <Typography gutterBottom variant="body2" className={classes.Reset}>Reset</Typography>
                             </Grid>
 
                         </Grid>
                     </CardContent>
                 </Card>
+                <div className={classes.registrationDivBackground} />
             </Grid>
         </Grid>
 

@@ -11,11 +11,6 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         flexWrap: "wrap",
     },
-    textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: 280
-    },
     cssLabel: {
         color: "#6D6C6C",
         "&.Mui-focused": {
@@ -23,6 +18,8 @@ const useStyles = makeStyles(theme => ({
         }
     },
     cssOutlinedInput: {
+        display: "flex",
+        flexWrap: "wrap",
         "&:not(hover):not($disabled):not($cssFocused):not($error) $notchedOutline": {
             borderColor: "#6D6C6C" //default
         },
@@ -36,19 +33,31 @@ const useStyles = makeStyles(theme => ({
     notchedOutline: {},
     cssFocused: {},
     error: {},
-    disabled: {}
+    disabled: {},
+    // widthAndHeight: {
+    //     height: "2em",
+    //     width: "50",
+    //     [theme.breakpoints.down("sm")]: {
+    //         width: "30em"
+    //     },
+    //     [theme.breakpoints.down("xs")]: {
+    //         width: "10em"
+    //     },
+
+
+    // }
 }));
 
 const InputField = (props) => {
     const classes = useStyles();
-    const {fieldName,onChangeFunc,value,isError,errorMessage} = props;
+    const { fieldName, onChangeFunc, value, isError, errorMessage } = props;
 
     return (
-        <TextField variant="outlined" label={fieldName}  fullWidth
+        <TextField variant="outlined" label={fieldName}
             value={value}
             error={isError}
-            helperText={isError?errorMessage: ''}
-            onChange={event =>onChangeFunc(event.target.value)}
+            helperText={isError ? errorMessage : ''}
+            onChange={event => onChangeFunc(event.target.value)}
             required InputLabelProps={{
                 classes: {
                     root: classes.cssLabel,
@@ -59,7 +68,8 @@ const InputField = (props) => {
                 classes: {
                     root: classes.cssOutlinedInput,
                     focused: classes.cssFocused,
-                    notchedOutline: classes.notchedOutline
+                    notchedOutline: classes.notchedOutline,
+                    input: classes.widthAndHeight
                 }
             }} />
 

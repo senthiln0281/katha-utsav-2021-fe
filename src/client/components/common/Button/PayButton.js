@@ -8,6 +8,13 @@ const useStyles = makeStyles(theme => ({
         color: "#ffffff",
         width: 400,
         height: 40,
+        [theme.breakpoints.down("sm")]: {
+            width: 320
+        },
+
+        [theme.breakpoints.down("xs")]: {
+            width: 220
+        },
         "&:hover":{
             backgroundColor:"#9D4395"
         },
