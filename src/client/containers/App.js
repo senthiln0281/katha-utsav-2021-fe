@@ -6,7 +6,6 @@ import {
         Switch,
 } from 'react-router-dom';
 
-import IndividualRegistration from '../components/IndividualRegistration/IndividualRegistration';
 import IndividualRegistrationContainer from '../containers/IndividualRegistrationContainer';
 
 
@@ -14,7 +13,8 @@ const AppContainer = () => (
 
         <Router>
                 <Switch>
-                <Route exact path="/" render={() => <IndividualRegistrationContainer />} />
+                <Route exact path="/" render={() => <div> Welcome To payment Page </div>} />
+                <Route exact path="/Individual" render={() => <IndividualRegistrationContainer />} />
 
                         <Route exact path="/payment" render={() => <div> Welcome To payment Page </div>} />
                 </Switch>
