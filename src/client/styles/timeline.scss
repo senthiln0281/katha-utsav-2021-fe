@@ -1,0 +1,146 @@
+.timeline {
+  padding: 0 2rem;
+  letter-spacing: 0;
+  font-family: 'Fredoka One';
+
+  @include breakpoint-xlarge {
+    padding: 0 5rem;
+  }
+
+  h3 {
+    font-weight: 400;
+    font-size: 2.625rem;
+    line-height: 4rem;
+
+    @include breakpoint-medium-down {
+      text-align: center;
+    }
+
+    @include breakpoint-xlarge {
+      font-size: 3rem;
+    }
+  }
+
+  &__flagship {
+    display: flex;
+
+    &--content {
+      font-family: 'Poppins';
+      font-weight: 400;
+      font-size: 1.125rem;
+      line-height: 2rem;
+      color: #66645E;
+      margin-right: 2rem;
+
+      @include breakpoint-xlarge {
+        margin-right: 2.5rem;
+      }
+    }
+
+    img {
+      display: none;
+
+      @include breakpoint-large-up {
+        width: 30rem;
+        display: block;
+      }
+
+      @include breakpoint-xlarge {
+        width: 35rem;
+      }
+
+    }
+  }
+
+  h4 {
+    font-weight: 400;
+    font-size: 2.75rem;
+    line-height: 4rem;
+
+    @include breakpoint-medium-down {
+      text-align: center;
+    }
+  }
+
+  &__impact {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint-large-up {
+      flex-direction: row;
+    }
+
+    &--content {
+      font-size: 1.375rem;
+      line-height: 3rem;
+      margin-bottom: 2.875rem;
+      padding-left: 4rem;
+
+      @include breakpoint-large-up {
+        font-size: 1.875rem;
+        padding: 0;
+      }
+    }
+
+    &--box {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 60%;
+      margin-left: 2rem;
+
+      @include breakpoint (xxlarge) {
+        width: 30%;
+        margin-left: 10rem;
+      }
+
+      @include breakpoint-medium-down {
+        width: 100%;
+        align-items: center;
+        margin: 0;
+      }
+    }
+
+    &--images {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+
+      @include breakpoint-medium-down {
+        //flex-direction: column;
+      }
+    }
+  }
+
+  .yellow {
+    color: #FEDB50;
+  }
+
+  .purple {
+    color: #98248D;
+  }
+
+  .image-with-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include breakpoint-large-down {
+      width: 25rem;
+    }
+
+    &__content {
+      font-family: Poppins;
+      width: 13.75rem;
+      margin-left: 1rem;
+
+      @include breakpoint-large-down {
+        width: 11rem;
+      }
+
+      @include breakpoint-medium-down {
+        width: 100%;
+      }
+    }
+  }
+}
