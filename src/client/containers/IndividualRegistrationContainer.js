@@ -1,9 +1,20 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import _ from 'lodash';
-import IndividualRegistration from '../components/IndividualRegistration/IndividualRegistration';
+import IndividualRegistration from '../components/IndividualRegistration';
 import * as action from '../store/actions/index';
 
+
+const mapStateToProps = (state) => {
+  return {
+    nameMessage: state.IndividualRegistrationReducer.IndividualRegistrationErrorInfo.nameMessage,
+    emailIdMessage: state.IndividualRegistrationReducer.IndividualRegistrationErrorInfo.emailIdMessage,
+    phoneNumberMessage: state.IndividualRegistrationReducer.IndividualRegistrationErrorInfo.phoneNumberMessage,
+    SchoolMessage: state.IndividualRegistrationReducer.IndividualRegistrationErrorInfo.SchoolMessage,
+    CityMessage: state.IndividualRegistrationReducer.IndividualRegistrationErrorInfo.CityMessage,
+    ClassMessage: state.IndividualRegistrationReducer.IndividualRegistrationErrorInfo.ClassMessage,
+    StoryCategoryMessage: state.IndividualRegistrationReducer.IndividualRegistrationErrorInfo.StoryCategoryMessage,
+    fileDataMessage: state.IndividualRegistrationReducer.IndividualRegistrationErrorInfo.fileDataMessage,
+  }};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -12,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const IndividualRegistrationContainer = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(IndividualRegistration);
 

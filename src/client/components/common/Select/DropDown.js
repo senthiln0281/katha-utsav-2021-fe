@@ -36,6 +36,11 @@ const useStyles = makeStyles(theme => ({
         },
      
     },
+    error: {
+        "&.MuiFormHelperText-root.Mui-error": {
+          color: theme.palette.common.red
+        }},
+
     widthAndHeight: {
         height: 15,
         width:330,
@@ -49,8 +54,29 @@ const useStyles = makeStyles(theme => ({
       }
 }));
 
+
+const helperTextStyles = makeStyles(theme => ({
+    root: {
+      margin: 4,
+      '&$error': {
+        color: '#f44336'
+      }
+    },
+    error: {
+        color: "#f44336"
+    } //<--this is required to make it work
+  }));
+
+  const styles = {
+    helper: {
+         color: 'red',
+         fontSize: '.8em',
+    }
+}
+
 const DropDown = (props) => {
     const classes = useStyles();
+    const helperTestClasses = helperTextStyles();
     const { options, fieldName,onChangeFunc,value, isError,errorMessage } = props;
     return (
             <TextField
@@ -67,6 +93,8 @@ const DropDown = (props) => {
                         input: classes.widthAndHeight
                     }
                 }}
+                FormHelperTextProps={{ style: styles.helper }}
+
                 select
             >
                 {_.map(options, (option) => <MenuItem key={option} value={option}>{option}</MenuItem>

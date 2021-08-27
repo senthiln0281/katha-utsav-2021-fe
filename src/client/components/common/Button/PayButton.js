@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme => ({
     PaymentButton:{
         backgroundColor:"#98248D",
         color: "#ffffff",
-        width: 400,
+        width: 360,
         height: 40,
         [theme.breakpoints.down("sm")]: {
             width: 320
@@ -23,10 +23,10 @@ const useStyles = makeStyles(theme => ({
 
 const PaymentButton = (props) => {
     const classes = useStyles();
-    const {onButtonClick} = props;
+    const {onButtonClick, name} = props;
 
     return (
-        <Button className={classes.PaymentButton} onClick= {onButtonClick}>Pay</Button>
+        <Button className={classes.PaymentButton} onClick= {onButtonClick}>{name}</Button>
     );
 };
 

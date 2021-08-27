@@ -1,8 +1,22 @@
 import * as actionTypes from '../actions/actionTypes';
 
+const initialState ={
+    IndividualRegistrationValidInfo:{
 
-const IndividualRegistrationReducer = (state = {}, action) => {
-    console.log('action', action);
+    },
+    IndividualRegistrationErrorInfo: {
+        nameMessage: '',
+        emailIdMessage: '',
+        phoneNumberMessage: '',
+        SchoolMessage: '',
+        CityMessage: '',
+        ClassMessage: '',
+        StoryCategoryMessage: '',
+        fileDataMessage: ''
+    }
+}
+
+const IndividualRegistrationReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.VALID_SUCCESS:
             const { name,
@@ -11,19 +25,27 @@ const IndividualRegistrationReducer = (state = {}, action) => {
                 School,
                 City,
                 Class,
-                StoryCategory,fileData } = action
-                console.log('finallog', fileData);
-                const fileInfo = {name:fileData.name}
+                StoryCategory, fileData } = action
+            const fileInfo = { name: fileData.name, size: fileData.size }
+            const IndividualRegistrationValidInfo = {name,emailId, phoneNumber,School,City,Class,StoryCategory,fileInfo}
             return {
                 ...state,
-                name,
-                emailId,
-                phoneNumber,
-                School,
-                City,
-                Class,
-                StoryCategory,
-                fileInfo
+                IndividualRegistrationValidInfo,
+                IndividualRegistrationErrorInfo : {
+                    nameMessage: "",
+                    emailIdMessage: "",
+                    SchoolMessage:"",
+                    CityMessage:"",
+                    ClassMessage:"",
+                    StoryCategoryMessage:"",
+                    fileDataMessage:"",
+                    phoneNumberMessage:""
+                }
+            }
+        case actionTypes.VALID_FAIL:
+            return {
+                ...state,
+                IndividualRegistrationErrorInfo: action.errorPayload
             }
         default:
             return state;

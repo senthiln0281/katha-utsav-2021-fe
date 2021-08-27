@@ -11,7 +11,8 @@ const FileUploader = ({onFileUpload,buttonName,style}) => {
  
   const handleChange = event => {
     const fileUploaded = event.target.files[0];
-    onFileUpload(fileUploaded);
+
+    onFileUpload(fileUploaded,event.target.value);
   };
   return (
     <>

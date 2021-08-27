@@ -4,5 +4,6 @@ export {
 
 export {
     validate,
-    validateSuccess
+    validateSuccess,
+    validateFail
 } from './IndividualRegistrationAction'
