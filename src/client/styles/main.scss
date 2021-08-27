@@ -14,6 +14,18 @@ ul {
   list-style: none;
 }
 
+h3 {
+  font-family: "Fredoka One";
+  font-weight: 400;
+  font-size: 3rem;
+  letter-spacing: 0;
+  line-height: 4rem;
+
+  @include breakpoint-medium-down {
+    text-align: center;
+  }
+}
+
 .home-page {
   background-color: #FFFFFF;
 }
@@ -22,3 +34,6 @@ ul {
 @import '../styles/header';
 @import '../styles/banner';
 @import '../styles/timeline';
+@import '../styles/about-katha';
+@import '../styles/katha-history';
+@import '../styles/mentors';

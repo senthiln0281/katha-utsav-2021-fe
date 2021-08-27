@@ -1,0 +1,64 @@
+.mentors {
+  padding: 1rem 2rem;
+  background: #F3F0EA;
+
+  @include breakpoint-large-up {
+    margin-top: -8rem;
+  }
+
+  @include breakpoint-xlarge {
+    padding: 1rem 5rem;
+  }
+
+  p {
+    font-family: Poppins;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+
+    @include breakpoint-xlarge {
+      flex-direction: row;
+    }
+
+    &--box {
+      display: flex;
+
+      .profile {
+        margin: 0 1.5rem 2rem;
+        font-family: Poppins;
+
+        img {
+          @include breakpoint-large-down {
+            width: 20rem;
+          }
+
+          @media screen and (min-width: 1500px) {
+            width: 30rem;
+          }
+        }
+
+        &__name {
+          font-weight: 700;
+          font-size: 1.25rem;
+          line-height: 2rem;
+        }
+
+        &__description {
+          font-weight: 400;
+          font-size: 1rem;
+          line-height: 1.5rem;
+
+        }
+      }
+    }
+  }
+}

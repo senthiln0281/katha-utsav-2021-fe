@@ -1,0 +1,36 @@
+.about-us {
+  font-family: "Fredoka One";
+  padding: 0 2rem;
+  letter-spacing: 0;
+
+  @include breakpoint-xlarge {
+    padding: 0 5rem;
+  }
+
+  &__container {
+    display: flex;
+    font-family: Poppins;
+    flex-direction: column;
+
+
+    @include breakpoint-large-up {
+      flex-direction: row;
+    }
+
+    .information {
+      width: 100%;
+      padding: 1rem;
+
+      h5 {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        font-weight: 400;
+      }
+    }
+  }
+}

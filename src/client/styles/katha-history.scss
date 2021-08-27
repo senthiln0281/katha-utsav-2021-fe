@@ -1,0 +1,25 @@
+.katha-history {
+  padding: 0 2rem;
+
+  @include breakpoint-xlarge {
+    padding: 0 5rem;
+  }
+  
+  #photos {
+   @include breakpoint-large-up {
+     line-height: 0;
+
+     -webkit-column-count: 3;
+     -webkit-column-gap: 5px;
+     -moz-column-count: 3;
+     -moz-column-gap: 5px;
+     column-count: 3;
+     column-gap: 5px;
+   }
+  }
+
+  #photos img {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}
