@@ -34,18 +34,17 @@ const useStyles = makeStyles(theme => ({
     cssFocused: {},
     error: {},
     disabled: {},
-    // widthAndHeight: {
-    //     height: "2em",
-    //     width: "50",
-    //     [theme.breakpoints.down("sm")]: {
-    //         width: "30em"
-    //     },
-    //     [theme.breakpoints.down("xs")]: {
-    //         width: "10em"
-    //     },
+    widthAndHeight: {
+
+        [theme.breakpoints.down("sm")]: {
+            width: "33em"
+        },
+        [theme.breakpoints.down("xs")]: {
+            width: "13em"
+        },
 
 
-    // }
+    }
 }));
 
 const InputField = (props) => {

@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
         height: 15,
         width:350,
         [theme.breakpoints.down("sm")]: {
-            width: 300
+            width: 320
         },
 
         [theme.breakpoints.down("xs")]: {
