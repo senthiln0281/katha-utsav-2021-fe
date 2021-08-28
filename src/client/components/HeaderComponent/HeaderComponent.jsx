@@ -41,6 +41,11 @@ const useStyles = makeStyles(theme => ({
 
         borderRadius: "0"
     },
+    menuRegistration: {
+        backgroundColor: "#fff",
+        color: "#98248D",
+
+    },
     appBar: {
         zIndex: theme.zIndex.modal + 1
     },
@@ -132,6 +137,9 @@ const HeaderComponent = () => {
     // const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
     const [openDrawer, setOpenDrawer] = useState(false);
     const [value, setValue] = useState(0);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [openMenu, setOpenMenu] = useState(false);
+
 
     const tabProperties = [
         { name: "Why Katha", url: "/" },
@@ -142,8 +150,20 @@ const HeaderComponent = () => {
         { name: "Mentors", url: "/" },
 
     ]
+    const handleClick = (event) => {
+        event.persist();
+        setAnchorEl(event.currentTarget);
 
-    const options = [
+        setOpenMenu(true);
+    };
+
+    const handleClose = () => {
+        console.log('left');
+        setOpenMenu(false);
+        setAnchorEl(null);
+    };
+
+    const menuServiceProperties = [
         'Individual Registration',
         'School Registration',
     ];
@@ -178,7 +198,8 @@ const HeaderComponent = () => {
     );
 
     const RegisterNow = (
-        <Button className={classes.buttonArrow}><span style={{ marginRight: 5 }}>Register Now </span> <img src={downarrow} alt="down arrow" /> </Button>
+        <Button className={classes.buttonArrow}  aria-haspopup={anchorEl ? "true" : undefined} aria-owns={anchorEl ? "simple-menu" : undefined} variant="contained" onClick={handleClick}>Register Now <img src={downarrow} alt="down arrow" /> </Button>
+        
     );
 
     const ContactUs = (
@@ -238,13 +259,42 @@ const HeaderComponent = () => {
 
                 <Grid item container alignItems="center" direction="column">
                     <Grid item>
-                        {RegisterNow}
+                    {RegisterNow}
                     </Grid>
                     <Grid item>
                         {ContactUs}
                     </Grid>
                 </Grid>
             </Grid>
+            <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={openMenu}
+                onClose={handleClose}
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'center',
+                  }}
+                  getContentAnchorEl={null}
+
+                classes={{ paper: classes.menuRegistration }}
+                MenuListProps={{
+                    onMouseLeave: handleClose,
+                }}
+                elevation={0}
+
+            >
+                {
+                    menuServiceProperties.map((option, index) => {
+                        return <MenuItem key={option+index}>{option}</MenuItem>
+                    })
+                }
+            </Menu>
         </React.Fragment>
 
     );
