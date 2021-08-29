@@ -80,6 +80,8 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+const Transition = React.forwardRef((props, ref) => <Slide ref={ref} direction="up" {...props} />);
+
 const IndividualRegistration = (props) => {
     const classes = useStyles();
     const [name, setName] = useState('');
@@ -92,7 +94,6 @@ const IndividualRegistration = (props) => {
     const [fileData, setFileData] = useState({});
     const [fileName, setFileName] = useState('Upload File');
 
-    const Transition = React.forwardRef((props, ref) => <Slide ref={ref} direction="up" {...props} />);
 
 
 
