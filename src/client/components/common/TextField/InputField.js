@@ -49,14 +49,14 @@ const useStyles = makeStyles(theme => ({
 
 const InputField = (props) => {
     const classes = useStyles();
-    const { fieldName, onChangeFunc, value, isError, errorMessage } = props;
+    const { fieldName, onChangeFunc, value, isError, errorMessage,eventValidation } = props;
 
     return (
-        <TextField variant="outlined" label={fieldName}
+        <TextField id={fieldName} variant="outlined" label={fieldName}
             value={value}
             error={isError}
             helperText={isError ? errorMessage : ''}
-            onChange={event => onChangeFunc(event.target.value)}
+            onChange={event => { onChangeFunc(event.target.value); eventValidation(event) }}
             required InputLabelProps={{
                 classes: {
                     root: classes.cssLabel,

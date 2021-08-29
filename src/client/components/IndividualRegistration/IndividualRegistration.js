@@ -83,33 +83,96 @@ const useStyles = makeStyles(theme => ({
 const Transition = React.forwardRef((props, ref) => <Slide ref={ref} direction="up" {...props} />);
 
 const IndividualRegistration = (props) => {
+    console.log('props', props);
     const classes = useStyles();
     const [name, setName] = useState('');
+    const [nameMessage, setNameMessage] = useState(props.nameMessage);
+
     const [emailId, setEmailId] = useState('');
+    const [emailIdMessage, setEmailIdMessage] = useState(props.emailIdMessage);
+
     const [school, setSchool] = useState('');
+    const [SchoolMessage, setSchoolMessage] = useState(props.SchoolMessage);
+    console.log('namemessage', SchoolMessage);
+
+
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [phoneNumberMessage, setPhoneNumberMessage] = useState(props.phoneNumberMessage);
+
     const [city, setCity] = useState('');
+    const [CityMessage, setCityMessage] = useState(props.CityMessage);
+
     const [storyCategory, setStoryCategory] = useState('');
+    const [StoryCategoryMessage, setStoryCategoryMessage] = useState(props.StoryCategoryMessage);
+
     const [classStandard, setClassStandard] = useState('');
+    const [ClassMessage, setClassMessage] = useState(props.ClassMessage);
+
     const [fileData, setFileData] = useState({});
+    const [fileDataMessage, setfileDataMessage] = useState(props.nameMessage);
+
     const [fileName, setFileName] = useState('Upload File');
 
 
 
 
-    const onFileUpload = async (selectedFile, name) => {
+    const onFileUpload = async (selectedFile, name, event) => {
         if (name) {
             const splitPath = name.split("\\");
             setFileName(`File Uploaded: ${splitPath[splitPath.length - 1]}`);
-            setFileData(fileData);
+            setFileData(selectedFile);
+            console.log('filedata', selectedFile);
+            console.log({target: {id: 'file'}});
+            IndividualRegistrationValidation({target: {id: 'file'}});
         }
     }
 
     const Validate = () => {
-        props.validateDetails(name, emailId, phoneNumber, school, city, classStandard, storyCategory, fileData)
+        let errorObject = { emailError: "", nameError: "", phoneNumberError: "", SchoolError: "", CityError: "", ClassError: "", StoryCategoryError: "", fileError: "", isError: false }
+        let emailValid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(emailId);
+        let phoneNumberValid = /^\d+$/.test(phoneNumber);
+        let schoolValid = /^[a-zA-Z]+$/.test(school);
+        let cityValid = /^[a-zA-Z]+$/.test(city);
+
+        if (_.isNull(emailId) || _.isEmpty(emailId) || !emailValid) {
+            setEmailIdMessage("Please enter a valid email")
+            errorObject.isError = true;
+        }
+        if (_.isEmpty(name) || _.isNull(name)) {
+            setNameMessage("Please enter a valid name");
+            errorObject.isError = true;
+        }
+        if (_.isEmpty(School) || _.isNull(School) || !schoolValid) {
+            setSchoolMessage("Please enter a valid school");
+            errorObject.isError = true;
+        }
+        if (_.isNull(phoneNumber) || _.isEmpty(phoneNumber) || !phoneNumberValid) {
+            setPhoneNumberMessage("Please enter a valid phoneNumber");
+            errorObject.isError = true;
+        }
+        if (_.isEmpty(storyCategory) || !_.includes(["Fiction", "Non-Fiction", "Poetry"], storyCategory)) {
+            setStoryCategoryMessage("Please select a valid StoryCategory");
+            errorObject.isError = true;
+        }
+        if (_.isEmpty(classStandard) || !_.includes(["4 to 6", "7 to 9 ", "10 to 12"], classStandard)) {
+            setClassMessage("Please enter a valid Class");
+            errorObject.isError = true;
+        }
+        if (_.isEmpty(fileData.name) || fileData.size > 10000000) {
+            setfileDataMessage("Please Upload file less than 10mb");
+            errorObject.isError = true;
+        }
+        if (_.isEmpty(city) || _.isNull(city) || !cityValid) {
+            setCityMessage("Please enter a valid Class");
+            errorObject.isError = true;
+        }
+
+        if (!errorObject.isError) {
+            props.validateDetails(name, emailId, phoneNumber, school, city, classStandard, storyCategory, fileData)
+        }
     }
 
-    const closePopUp =()=>{
+    const closePopUp = () => {
         props.showPopUp(false);
     }
 
@@ -123,6 +186,89 @@ const IndividualRegistration = (props) => {
         setClassStandard('');
         setFileData({});
     }
+
+    const IndividualRegistrationValidation = (event) => {
+
+        console.log('entered');
+        switch (event.target.id) {
+            case 'Email ID':
+                let emailValid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(event.target.value);
+                if (_.isNull(event.target.value) || _.isEmpty(event.target.value) || !emailValid) {
+                    setEmailIdMessage("Please enter a valid email")
+                }
+                else {
+                    setEmailIdMessage("")
+                }
+                break;
+            case 'Name':
+                if (_.isEmpty(event.target.value) || _.isNull(event.target.value)) {
+                    setNameMessage("Please enter a valid name");
+                }
+                else {
+                    setNameMessage("");
+                }
+                break;
+            case 'School':
+                let schoolValid = /^[a-zA-Z]+$/.test(event.target.value);
+
+                if (_.isEmpty(event.target.value) || _.isNull(event.target.value) || !schoolValid) {
+                    setSchoolMessage("Please enter a valid school");
+                }
+                else {
+                    setSchoolMessage("");
+                }
+                break;
+            case 'Phone Number':
+                let phoneNumberValid = /^\d+$/.test(event.target.value);
+                if (_.isNull(event.target.value) || _.isEmpty(event.target.value) || !phoneNumberValid) {
+                    setPhoneNumberMessage("Please enter a valid phoneNumber");
+                }
+                else {
+                    setPhoneNumberMessage("");
+                }
+                break;
+            case 'Story Category':
+
+                if (_.isEmpty(event.target.value) || !_.includes(["Fiction", "Non-Fiction", "Poetry"], event.target.value)) {
+                    setStoryCategoryMessage("Please enter a valid StoryCategory");
+                }
+                else {
+                    setStoryCategoryMessage("");
+                }
+                break;
+            case 'Class':
+                if (_.isEmpty(event.target.value) || !_.includes(["4 to 6", "7 to 9 ", "10 to 12"], event.target.value)) {
+                    setClassMessage("Please enter a valid Class");
+                }
+                else {
+                    setClassMessage("");
+                }
+                break;
+            case 'file':
+                console.log('case file', fileData.size);
+                if (_.isEmpty(fileName) || fileData.size > 10000000) {
+                    console.log('sfdlajsdflsj');
+                    setfileDataMessage("Please Upload file less than 10mb");
+                }
+                else {
+                    setfileDataMessage("");
+                }
+                break;
+            case 'City':
+                let cityValid = /^[a-zA-Z]+$/.test(event.target.value);
+                if (_.isEmpty(event.target.value) || _.isNull(event.target.value) || !cityValid) {
+                    setCityMessage("Please Provide a valid city");
+                }
+                else {
+                    setCityMessage("");
+                }
+                break;
+            default:
+
+                break;
+        }
+    }
+
     const theme = useTheme();
 
 
@@ -160,35 +306,35 @@ const IndividualRegistration = (props) => {
                                 </Grid>
 
                                 <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
-                                    <InputField errorMessage={props.nameMessage} isError={props.nameMessage.length > 0} fieldName={"Name"} onChangeFunc={setName} value={name} />
+                                    <InputField errorMessage={nameMessage} isError={nameMessage.length > 0} fieldName={"Name"} onChangeFunc={setName} eventValidation={IndividualRegistrationValidation} value={name} />
                                 </Grid>
                                 <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
-                                    <InputField errorMessage={props.emailIdMessage} isError={props.emailIdMessage.length > 0} fieldName={"Email ID"} onChangeFunc={setEmailId} value={emailId} />
+                                    <InputField errorMessage={emailIdMessage} isError={emailIdMessage.length > 0} fieldName={"Email ID"} onChangeFunc={setEmailId} eventValidation={IndividualRegistrationValidation} value={emailId} />
                                 </Grid>
                                 <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
-                                    <InputField errorMessage={props.phoneNumberMessage} isError={props.phoneNumberMessage.length > 0} fieldName={"Phone Number"} onChangeFunc={setPhoneNumber} value={phoneNumber} />
-                                </Grid>
-
-                                <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
-                                    <InputField errorMessage={props.SchoolMessage} isError={props.SchoolMessage.length > 0} fieldName={"School"} onChangeFunc={setSchool} value={school} />
+                                    <InputField errorMessage={phoneNumberMessage} isError={phoneNumberMessage.length > 0} fieldName={"Phone Number"} onChangeFunc={setPhoneNumber} eventValidation={IndividualRegistrationValidation} value={phoneNumber} />
                                 </Grid>
 
                                 <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
-                                    <InputField errorMessage={props.CityMessage} isError={props.CityMessage.length > 0} fieldName={"City"} onChangeFunc={setCity} value={city} />
+                                    <InputField errorMessage={SchoolMessage} isError={SchoolMessage.length > 0} fieldName={"School"} onChangeFunc={setSchool} eventValidation={IndividualRegistrationValidation} value={school} />
                                 </Grid>
 
                                 <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
-                                    <DropDown errorMessage={props.ClassMessage} isError={props.ClassMessage.length > 0} fieldName={"Class"} options={["4 to 6", "7 to 9 ", "10 to 12"]} onChangeFunc={setClassStandard} value={classStandard} />
+                                    <InputField errorMessage={CityMessage} isError={CityMessage.length > 0} fieldName={"City"} onChangeFunc={setCity} eventValidation={IndividualRegistrationValidation} value={city} />
+                                </Grid>
+
+                                <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
+                                    <DropDown errorMessage={ClassMessage} isError={ClassMessage.length > 0} fieldName={"Class"} options={["4 to 6", "7 to 9 ", "10 to 12"]} onChangeFunc={setClassStandard} eventValidation={IndividualRegistrationValidation} value={classStandard} />
                                 </Grid>
 
 
                                 <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
-                                    <DropDown errorMessage={props.StoryCategoryMessage} isError={props.StoryCategoryMessage.length > 0} fieldName={"Story Category"} options={["Fiction", "Non-Fiction", "Poetry"]} onChangeFunc={setStoryCategory} value={storyCategory} />
+                                    <DropDown errorMessage={StoryCategoryMessage} isError={StoryCategoryMessage.length > 0} fieldName={"Story Category"} options={["Fiction", "Non-Fiction", "Poetry"]} onChangeFunc={setStoryCategory} eventValidation={IndividualRegistrationValidation} value={storyCategory} />
                                 </Grid>
 
                                 <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
                                     <FileUploader onFileUpload={onFileUpload} style={classes.UploadFile} buttonName={fileName} />
-                                    <Typography align="left" gutterBottom variant="body1" style={{ fontSize: "0.75rem" }} className={classes.errorMessage}>{props.fileDataMessage}</Typography>
+                                    <Typography align="left" gutterBottom variant="body1" style={{ fontSize: "0.75rem" }} className={classes.errorMessage}>{fileDataMessage}</Typography>
                                 </Grid>
 
                                 <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
