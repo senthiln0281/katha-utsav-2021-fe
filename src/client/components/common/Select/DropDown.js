@@ -86,7 +86,7 @@ const DropDown = (props) => {
             error={false}
             helperText={isError ? errorMessage : ''}
             value={value}
-            onChange={(e) => {onChangeFunc(e.target.value); eventValidation(e)}}
+            onChange={(e) => {eventValidation(fieldName,e)}}
             variant="outlined"
             label={fieldName}
             InputProps={{

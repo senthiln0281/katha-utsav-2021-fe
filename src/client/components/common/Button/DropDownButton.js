@@ -26,7 +26,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const DropDownButton = (props) => {
-    console.log('dropdownbutton', props);
     const [anchorEl, setAnchorEl] = useState(null);
     const [openMenu, setOpenMenu] = useState(false);
     const [page, setPage] = useState('');
@@ -43,7 +42,6 @@ const DropDownButton = (props) => {
     const onMenuClick = () => {
     }
     const handleClose = () => {
-        console.log('hello world');
         setPage('');
         setOpenMenu(false);
         setAnchorEl(null);

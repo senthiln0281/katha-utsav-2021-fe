@@ -83,7 +83,6 @@ const useStyles = makeStyles(theme => ({
 const Transition = React.forwardRef((props, ref) => <Slide ref={ref} direction="up" {...props} />);
 
 const IndividualRegistration = (props) => {
-    console.log('props', props);
     const classes = useStyles();
     const [name, setName] = useState('');
     const [nameMessage, setNameMessage] = useState(props.nameMessage);
@@ -93,7 +92,6 @@ const IndividualRegistration = (props) => {
 
     const [school, setSchool] = useState('');
     const [SchoolMessage, setSchoolMessage] = useState(props.SchoolMessage);
-    console.log('namemessage', SchoolMessage);
 
 
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -121,9 +119,7 @@ const IndividualRegistration = (props) => {
             const splitPath = name.split("\\");
             setFileName(`File Uploaded: ${splitPath[splitPath.length - 1]}`);
             setFileData(selectedFile);
-            console.log('filedata', selectedFile);
-            console.log({target: {id: 'file'}});
-            IndividualRegistrationValidation({target: {id: 'file'}});
+            IndividualRegistrationValidation({ target: { id: 'file' } });
         }
     }
 
@@ -154,7 +150,7 @@ const IndividualRegistration = (props) => {
             setStoryCategoryMessage("Please select a valid StoryCategory");
             errorObject.isError = true;
         }
-        if (_.isEmpty(classStandard) || !_.includes(["4 to 6", "7 to 9 ", "10 to 12"], classStandard)) {
+        if (_.isEmpty(classStandard) || !_.includes(["4 to 6", "7 to 9", "10 to 12"], classStandard)) {
             setClassMessage("Please enter a valid Class");
             errorObject.isError = true;
         }
@@ -176,20 +172,32 @@ const IndividualRegistration = (props) => {
         props.showPopUp(false);
     }
 
+    const onDropDown = (id,event) => {
+        IndividualRegistrationValidation({ target: { id: `${id}`, value: `${event.target.value}`, } });
+    }
+
     const onReset = () => {
         setName('');
+        setNameMessage('');
         setEmailId('');
+        setEmailIdMessage('');
         setSchool('');
+        setSchoolMessage('');
         setPhoneNumber('');
+        setPhoneNumberMessage('');
         setCity('');
+        setCityMessage('');
         setStoryCategory('');
+        setStoryCategoryMessage('');
         setClassStandard('');
+        setClassMessage('');
         setFileData({});
+        setFileName('Upload File');
+        setfileDataMessage('');
     }
 
     const IndividualRegistrationValidation = (event) => {
 
-        console.log('entered');
         switch (event.target.id) {
             case 'Email ID':
                 let emailValid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(event.target.value);
@@ -197,6 +205,7 @@ const IndividualRegistration = (props) => {
                     setEmailIdMessage("Please enter a valid email")
                 }
                 else {
+                    setEmailId(event.target.value);
                     setEmailIdMessage("")
                 }
                 break;
@@ -205,6 +214,7 @@ const IndividualRegistration = (props) => {
                     setNameMessage("Please enter a valid name");
                 }
                 else {
+                    setName(event.target.value);
                     setNameMessage("");
                 }
                 break;
@@ -215,6 +225,7 @@ const IndividualRegistration = (props) => {
                     setSchoolMessage("Please enter a valid school");
                 }
                 else {
+                    setSchool(event.target.value);
                     setSchoolMessage("");
                 }
                 break;
@@ -224,6 +235,7 @@ const IndividualRegistration = (props) => {
                     setPhoneNumberMessage("Please enter a valid phoneNumber");
                 }
                 else {
+                    setPhoneNumber(event.target.value);
                     setPhoneNumberMessage("");
                 }
                 break;
@@ -233,21 +245,21 @@ const IndividualRegistration = (props) => {
                     setStoryCategoryMessage("Please enter a valid StoryCategory");
                 }
                 else {
+                    setStoryCategory(event.target.value);
                     setStoryCategoryMessage("");
                 }
                 break;
             case 'Class':
-                if (_.isEmpty(event.target.value) || !_.includes(["4 to 6", "7 to 9 ", "10 to 12"], event.target.value)) {
+                if (_.isEmpty(event.target.value) || !_.includes(["4 to 6", "7 to 9", "10 to 12"], event.target.value)) {
                     setClassMessage("Please enter a valid Class");
                 }
                 else {
+                    setClassStandard(event.target.value);
                     setClassMessage("");
                 }
                 break;
             case 'file':
-                console.log('case file', fileData.size);
                 if (_.isEmpty(fileName) || fileData.size > 10000000) {
-                    console.log('sfdlajsdflsj');
                     setfileDataMessage("Please Upload file less than 10mb");
                 }
                 else {
@@ -260,11 +272,11 @@ const IndividualRegistration = (props) => {
                     setCityMessage("Please Provide a valid city");
                 }
                 else {
+                    setCity(event.target.value);
                     setCityMessage("");
                 }
                 break;
             default:
-
                 break;
         }
     }
@@ -324,12 +336,12 @@ const IndividualRegistration = (props) => {
                                 </Grid>
 
                                 <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
-                                    <DropDown errorMessage={ClassMessage} isError={ClassMessage.length > 0} fieldName={"Class"} options={["4 to 6", "7 to 9 ", "10 to 12"]} onChangeFunc={setClassStandard} eventValidation={IndividualRegistrationValidation} value={classStandard} />
+                                    <DropDown errorMessage={ClassMessage} isError={ClassMessage.length > 0} fieldName={"Class"} options={["4 to 6", "7 to 9", "10 to 12"]} onChangeFunc={setClassStandard} eventValidation={onDropDown} value={classStandard} />
                                 </Grid>
 
 
                                 <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
-                                    <DropDown errorMessage={StoryCategoryMessage} isError={StoryCategoryMessage.length > 0} fieldName={"Story Category"} options={["Fiction", "Non-Fiction", "Poetry"]} onChangeFunc={setStoryCategory} eventValidation={IndividualRegistrationValidation} value={storyCategory} />
+                                    <DropDown errorMessage={StoryCategoryMessage} isError={StoryCategoryMessage.length > 0} fieldName={"Story Category"} options={["Fiction", "Non-Fiction", "Poetry"]} onChangeFunc={setStoryCategory} eventValidation={onDropDown} value={storyCategory} />
                                 </Grid>
 
                                 <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
