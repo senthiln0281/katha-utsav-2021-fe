@@ -5,10 +5,11 @@ import AboutKatha from '../AboutKatha/AboutKatha';
 import KathaHistory from '../KathaHistory/KathaHistory';
 import Mentors from '../Mentors/Mentors';
 
-const Home = () => {
+const Home = (props) => {
+    console.log('testing', props);
     return (
         <React.Fragment>
-            <HeaderComponent />
+            <HeaderComponent {...props}/>
             <Timeline />
             <AboutKatha />
             <KathaHistory />

@@ -5,5 +5,6 @@ export {
 export {
     validate,
     validateSuccess,
-    validateFail
+    validateFail,
+    showPopUp
 } from './IndividualRegistrationAction'

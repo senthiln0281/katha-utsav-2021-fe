@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import BannerComponent from '../BannerComponent/BannerComponent';
 import Logo from '../../assets/images/katha-logo.png';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Typography from "@material-ui/core/Typography";
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -11,16 +9,13 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '../../assets/images/MenuIcon.png';
-import downarrow from '../../assets/images/downarrow.png';
-import Grid from "@material-ui/core/Grid";
 import kathautsav from "../../assets/kathautsav.png"
+import Grid from "@material-ui/core/Grid";
 import HeroImg from '../../assets/images/hero-bg.png';
-import Button from '@material-ui/core/Button';
-
+import IndividualRegistrationContainer from '../../containers/IndividualRegistrationContainer';
+import DropDownButton from '../common/Button/DropDownButton';
 
 function ElevationScroll(props) {
     const { children } = props;
@@ -126,19 +121,16 @@ const useStyles = makeStyles(theme => ({
         fontSize: "18px"
     }
 
-
 }));
 
-const HeaderComponent = () => {
+const HeaderComponent = (props) => {
 
     const classes = useStyles();
     const theme = useTheme();
     const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
-    // const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
     const [openDrawer, setOpenDrawer] = useState(false);
     const [value, setValue] = useState(0);
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [openMenu, setOpenMenu] = useState(false);
+
 
 
     const tabProperties = [
@@ -150,22 +142,10 @@ const HeaderComponent = () => {
         { name: "Mentors", url: "/" },
 
     ]
-    const handleClick = (event) => {
-        event.persist();
-        setAnchorEl(event.currentTarget);
-
-        setOpenMenu(true);
-    };
-
-    const handleClose = () => {
-        console.log('left');
-        setOpenMenu(false);
-        setAnchorEl(null);
-    };
 
     const menuServiceProperties = [
-        'Individual Registration',
-        'School Registration',
+        { name: 'Individual Registration', showPopUpFun: props.showIndividualPopUp },
+        { name: 'School Registration', showPopUpFun: props.showIndividualPopUp },
     ];
 
     const handleChange = (event, newValue) => {
@@ -191,15 +171,10 @@ const HeaderComponent = () => {
                             </div>
                         </div>
                     </header>
-                    <BannerComponent />
+                    <BannerComponent menuServiceProperties={menuServiceProperties} />
                 </div>
             </div>
         </React.Fragment>
-    );
-
-    const RegisterNow = (
-        <Button className={classes.buttonArrow}  aria-haspopup={anchorEl ? "true" : undefined} aria-owns={anchorEl ? "simple-menu" : undefined} variant="contained" onClick={handleClick}>Register Now <img src={downarrow} alt="down arrow" /> </Button>
-        
     );
 
     const ContactUs = (
@@ -259,42 +234,13 @@ const HeaderComponent = () => {
 
                 <Grid item container alignItems="center" direction="column">
                     <Grid item>
-                    {RegisterNow}
+                        {<DropDownButton menuServiceProperties={menuServiceProperties} />}
                     </Grid>
                     <Grid item>
                         {ContactUs}
                     </Grid>
                 </Grid>
             </Grid>
-            <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={openMenu}
-                onClose={handleClose}
-                anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'center',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'center',
-                  }}
-                  getContentAnchorEl={null}
-
-                classes={{ paper: classes.menuRegistration }}
-                MenuListProps={{
-                    onMouseLeave: handleClose,
-                }}
-                elevation={0}
-
-            >
-                {
-                    menuServiceProperties.map((option, index) => {
-                        return <MenuItem key={option+index}>{option}</MenuItem>
-                    })
-                }
-            </Menu>
         </React.Fragment>
 
     );
@@ -305,7 +251,6 @@ const HeaderComponent = () => {
     return (
         <React.Fragment>
             <ElevationScroll>
-
                 {matchesXS ? drawer : tabs}
             </ElevationScroll>
 

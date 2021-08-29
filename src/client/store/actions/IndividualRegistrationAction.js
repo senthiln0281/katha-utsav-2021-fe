@@ -46,3 +46,12 @@ export const validateFail = (nameMessage, emailIdMessage, phoneNumberMessage, Sc
         errorPayload
     }
 }
+
+export const showPopUp = (showPopUp) => {
+    console.log('showPop', true);
+    return {
+        type: actionTypes.IS_SHOW_POPUP,
+        showPopUp
+    }
+}
+
