@@ -1,0 +1,36 @@
+.timer {
+  padding: 1.5rem 3rem;
+  height: 12.5rem;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border-radius: 1rem;
+  width: 80%;
+  margin: -8rem auto 6rem;
+  text-align: center;
+  max-width: 72rem;
+
+  @media (max-width: 500px) {
+    padding: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    color: #A0248D;
+  }
+
+  &__time-left {
+    font-family: Fredoka One;
+    font-weight: 400;
+    font-size: 3rem;
+    line-height: 4rem;
+    letter-spacing: 0;
+
+    span {
+      margin: 2.625rem;
+
+      @media (max-width: 500px) {
+        margin: .75rem;
+      }
+    }
+  }
+}

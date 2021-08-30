@@ -79,7 +79,7 @@ const useStyles = makeStyles(theme => ({
     },
     headerContainerMobile: {
         backgroundColor: "#FECB05",
-        padding: 0,
+        padding: "0 1rem",
         width: "100%",
 
     },

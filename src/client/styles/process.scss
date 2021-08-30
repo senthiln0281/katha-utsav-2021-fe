@@ -1,0 +1,138 @@
+.process {
+  padding: 1rem 1rem 5rem;
+  background: #F3F0EA;
+
+  @media (min-width: 1000px) {
+    padding: 1rem 2rem 5rem;
+  }
+
+  @include breakpoint-xlarge {
+    padding: 1rem 5rem 5rem;
+  }
+
+  &__container {
+    display: flex;
+    font-family: Poppins;
+    justify-content: center;
+
+    @include breakpoint-medium-down {
+      flex-direction: column;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+    @media screen and (min-width: 1500px) {
+      margin: 0;
+    }
+
+    &--button {
+      width: 40rem;
+      height: 12rem;
+      border-radius: .5rem;
+      padding: 3rem 5rem;
+      margin-bottom: 1rem;
+      background-color: white;
+      border: none;
+
+      @include breakpoint-large-down {
+        width: 30rem;
+        height: 10rem;
+        padding: 1rem;
+      }
+
+      @media (max-width: 600px) {
+        width: 20rem;
+      }
+
+      @media (max-width: 340px) {
+        width: 16rem;
+      }
+
+      .button-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+
+        @include breakpoint-medium-up {
+          justify-content: end;
+          margin: 0 4rem;
+        }
+
+        img {
+          height: 6rem;
+          margin-right: 1rem;
+
+          @media (max-width: 600px) {
+            display: none;
+          }
+        }
+      }
+
+
+      h5 {
+        font-weight: 700;
+        font-size: 0.875rem;
+        line-height: 1.125rem;
+        letter-spacing: 1px;
+      }
+
+      p {
+        font-weight: 400;
+        letter-spacing: 0;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+      }
+    }
+
+    &--button:last-child {
+      margin-bottom: 0;
+    }
+
+    .yellow {
+      background-color: #FEDB50;
+    }
+  }
+
+  &__content {
+    background-color: #FEDB50;
+    padding: 2rem;
+
+    @include breakpoint-medium-down {
+      width: 26rem;
+      margin: 1rem auto;
+    }
+
+    @media (max-width: 600px) {
+      width: 16rem;
+    }
+
+    @media (max-width: 340px) {
+      width: 12rem;
+    }
+
+    h4 {
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.125rem;
+      line-height: 1.125rem;
+      letter-spacing: 1px;
+    }
+
+    ul {
+      list-style: disc;
+
+      li {
+        margin-top: 1.25rem;
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
