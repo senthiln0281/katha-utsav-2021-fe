@@ -130,7 +130,7 @@ const HeaderComponent = (props) => {
 
     const classes = useStyles();
     const theme = useTheme();
-    const matchesMD = useMediaQuery(theme.breakpoints.down('sm'));
+    const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
     const [openDrawer, setOpenDrawer] = useState(false);
     const [value, setValue] = useState(0);
 
@@ -254,7 +254,7 @@ const HeaderComponent = (props) => {
     return (
         <React.Fragment>
             <ElevationScroll>
-                {matchesMD ? drawer : tabs}
+                {matchesSM ? drawer : tabs}
             </ElevationScroll>
 
         </React.Fragment>
