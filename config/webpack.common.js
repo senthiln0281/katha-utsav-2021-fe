@@ -13,6 +13,7 @@ module.exports = {
   entry: [
     '@babel/polyfill',
     path.join(__dirname, '../src/client/index'),
+    path.join(__dirname, '../src/client/styles/main.scss'),
   ], output: {
     path: path.join(__dirname, '../dist'),
     filename: 'static/[name].[hash].js',
