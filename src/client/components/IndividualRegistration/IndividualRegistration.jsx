@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import crossMark from "../../assets/crossMark.png"
-import kathautsav from "../../assets/kathautsav.png"
+import crossMark from "./../../assets/images/close.png";
+import Logo from '../../assets/images/katha-logo.png';
 import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
 import Card from '@material-ui/core/Card';
@@ -11,7 +11,7 @@ import CardContent from '@material-ui/core/CardContent';
 import InputField from '../common/TextField/InputField';
 import DropDown from '../common/Select/DropDown';
 import PaymentButton from '../common/Button/PayButton';
-import FileUploader from '../common/FileUploader'
+import FileUploader from '../common/FileUploader';
 import Slide from '@material-ui/core/Slide';
 import Dialog from '@material-ui/core/Dialog';
 
@@ -301,7 +301,7 @@ const IndividualRegistration = (props) => {
                 {/*---Title and subtitle---*/}
                 <Grid item container alignItems="center" direction="column">
                     <Grid item>
-                        <img alt src={kathautsav} alt="title" width="168" height="90" />
+                        <img alt src={Logo} alt="title" width="168" height="90" />
                     </Grid>
                     <Grid item>
                         <Typography gutterBottom variant="subtitle2" className={classes.RegistrationForm}>Registration Form for Students</Typography>

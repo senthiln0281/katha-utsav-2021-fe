@@ -11,7 +11,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '../../assets/images/MenuIcon.png';
-import kathautsav from "../../assets/kathautsav.png"
 import Grid from "@material-ui/core/Grid";
 import HeroImg from '../../assets/images/hero-bg.png';
 import IndividualRegistrationContainer from '../../containers/IndividualRegistrationContainer';
@@ -208,7 +207,7 @@ const HeaderComponent = (props) => {
                     </Grid>
 
                     <Grid item style={{ margin: "0 auto" }}>
-                        <img alt src={kathautsav} alt="title" width="168" height="90" />
+                        <img alt src={Logo} alt="title" width="168" height="90" />
                     </Grid>
 
 
