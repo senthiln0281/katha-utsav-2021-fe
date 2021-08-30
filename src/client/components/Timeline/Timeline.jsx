@@ -17,7 +17,7 @@ const Timeline = () => {
     return (
       <React.Fragment>
           <div className='timeline'>
-              <h3>Why you should be part of Katha Utsav ?</h3>
+              <h3 id="whykatha">Why you should be part of Katha Utsav ?</h3>
               <div className='timeline__flagship'>
                   <div className='timeline__flagship--content'>The Utsav is Katha’s flagship event in building skills of expression in children, whether they identify themselves as poets, authors, or social media activists. As our geographical boundaries disappear, children need to develop respect for our traditions while accepting different cultures. An important message that the Katha Utsav conveys is that children need to focus on self-improvement, and not an unhealthy competition, and hence the journey during the Utsav is always in the form of workshops, and knowledge sharing, and not on who emerged a winner. For us, every child is a winner, if only we could accommodate so many.</div>
                   <div><img src={Podium} alt="" /></div>

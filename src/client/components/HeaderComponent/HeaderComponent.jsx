@@ -11,11 +11,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '../../assets/images/MenuIcon.png';
-import kathautsav from "../../assets/kathautsav.png"
 import Grid from "@material-ui/core/Grid";
 import HeroImg from '../../assets/images/hero-bg.png';
-import IndividualRegistrationContainer from '../../containers/IndividualRegistrationContainer';
 import DropDownButton from '../common/Button/DropDownButton';
+import {Link} from 'react-scroll'
 
 function ElevationScroll(props) {
     const { children } = props;
@@ -137,12 +136,12 @@ const HeaderComponent = (props) => {
 
 
     const tabProperties = [
-        { name: "Why Katha", url: "/" },
-        { name: "Process", url: "/" },
-        { name: "About Katha21", url: "/" },
-        { name: "Schedule", url: "/" },
-        { name: "Gallery", url: "/" },
-        { name: "Mentors", url: "/" },
+        { name: "Why Katha", url: "whykatha" },
+        { name: "Process", url: "process" },
+        { name: "About Katha21", url: "about-us" },
+        { name: "Schedule", url: "about-us" },
+        { name: "Gallery", url: "katha-history" },
+        { name: "Mentors", url: "mentors" },
 
     ]
 
@@ -164,12 +163,12 @@ const HeaderComponent = (props) => {
                             <div className='logo'><img src={Logo} alt="logo" /></div>
                             <div className='menus'>
                                 <ul>
-                                    <li><a href="#">Why Katha?</a></li>
-                                    <li><a href="#">Process</a></li>
-                                    <li><a href="#">About Katha21</a></li>
-                                    <li><a href="#">Schedule</a></li>
-                                    <li><a href="#">Gallery</a></li>
-                                    <li><a href="#">Mentors</a></li>
+                                    <li><Link  to="whykatha" spy={true} smooth={true}><a href="#">Why Katha?</a></Link></li>
+                                    <li><Link  to="process" spy={true} smooth={true}><a href="#">Process</a></Link></li>
+                                    <li><Link  to="about-us" spy={true} smooth={true}><a href="#">About Katha21</a></Link></li>
+                                    <li><Link  to="about-us" spy={true} smooth={true}><a href="#">Schedule</a></Link></li>
+                                    <li><Link  to="katha-history" spy={true} smooth={true}><a href="#">Gallery</a></Link></li>
+                                    <li><Link  to="mentors" spy={true} smooth={true}><a href="#">Mentors</a></Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -192,10 +191,12 @@ const HeaderComponent = (props) => {
                 <List disablePadding>
                     {
                         tabProperties.map((option, index) => (
+                            <Link  to={option.url} spy={true} smooth={true}>
                             <ListItem key={option.name} selected={value === index}
                                 onClick={(e) => { handleChange(e, index); setOpenDrawer(false) }} divider button>
                                 <ListItemText classes={{ root: value !== index ? classes.menuItem : classes.selectedItem }} disableTypography>{option.name}</ListItemText>
                             </ListItem>
+                            </Link>
                         ))
                     }
                 </List>
@@ -211,7 +212,7 @@ const HeaderComponent = (props) => {
                     </Grid>
 
                     <Grid item style={{ margin: "0 auto" }}>
-                        <img alt src={kathautsav} alt="title" width="168" height="90" />
+                        <img alt src={Logo} alt="title" width="168" height="90" />
                     </Grid>
 
 

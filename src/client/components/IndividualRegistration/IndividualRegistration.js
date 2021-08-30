@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import crossMark from "../../assets/crossMark.png"
-import kathautsav from "../../assets/kathautsav.png"
+import Logo from '../../assets/images/katha-logo.png';
+import close from '../../assets/images/close.png';
 import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
 import Card from '@material-ui/core/Card';
@@ -294,14 +294,14 @@ const IndividualRegistration = (props) => {
                 {/*---Cross Mark---*/}
                 <Grid item container justifyContent="flex-end">
                     <Grid item component={Button} onClick={closePopUp} >
-                        <img alt src={crossMark} alt="crossmark" width="12" height="12" />
+                        <img alt src={close} alt="crossmark" width="20" height="20" />
                     </Grid>
                 </Grid>
 
                 {/*---Title and subtitle---*/}
                 <Grid item container alignItems="center" direction="column">
                     <Grid item>
-                        <img alt src={kathautsav} alt="title" width="168" height="90" />
+                        <img alt src={Logo} alt="title" width="168" height="90" />
                     </Grid>
                     <Grid item>
                         <Typography gutterBottom variant="subtitle2" className={classes.RegistrationForm}>Registration Form for Students</Typography>
