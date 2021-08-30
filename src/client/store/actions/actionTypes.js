@@ -6,4 +6,5 @@ export const HELLO_CALL = 'HELLO_CALL';
 export const VALID_INITIATE = 'VALID_INITIATE';
 export const VALID_SUCCESS = 'VALID_SUCCESS';
 export const VALID_FAIL = 'VALID_FAIL';
+export const IS_SHOW_POPUP = 'IS_SHOW_POPUP'
 

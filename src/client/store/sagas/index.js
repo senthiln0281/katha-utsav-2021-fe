@@ -16,7 +16,7 @@ export  function* watchHelloCall() {
 
 export  function* watchIndividualRegistrationCall() {
   yield all([
-     takeEvery(actionTypes.VALID_INITIATE, ValidateIndividualRegistration)
+     takeEvery(actionTypes.VALID_INITIATE, ValidateIndividualRegistration),
   ]);
 }
 

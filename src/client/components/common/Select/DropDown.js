@@ -34,72 +34,73 @@ const useStyles = makeStyles(theme => ({
         "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
             borderColor: "purple"
         },
-     
+
     },
     error: {
         "&.MuiFormHelperText-root.Mui-error": {
-          color: theme.palette.common.red
-        }},
+            color: theme.palette.common.red
+        }
+    },
 
     widthAndHeight: {
         height: 15,
-        width:330,
+        width: 330,
         [theme.breakpoints.down("sm")]: {
-            width:280
+            width: 280
         },
 
         [theme.breakpoints.down("xs")]: {
             width: 210
         }
-      }
+    }
 }));
 
 
 const helperTextStyles = makeStyles(theme => ({
     root: {
-      margin: 4,
-      '&$error': {
-        color: '#f44336'
-      }
+        margin: 4,
+        '&$error': {
+            color: '#f44336'
+        }
     },
     error: {
         color: "#f44336"
     } //<--this is required to make it work
-  }));
+}));
 
-  const styles = {
+const styles = {
     helper: {
-         color: 'red',
-         fontSize: '.8em',
+        color: 'red',
+        fontSize: '.8em',
     }
 }
 
 const DropDown = (props) => {
     const classes = useStyles();
     const helperTestClasses = helperTextStyles();
-    const { options, fieldName,onChangeFunc,value, isError,errorMessage } = props;
+    const { options, fieldName, onChangeFunc, value, isError, errorMessage,eventValidation } = props;
     return (
-            <TextField
-                
-                className={classes.root}
-                error={false}
-                helperText={isError? errorMessage: ''}
-                value={value}
-                 onChange={e => onChangeFunc(e.target.value)}
-                variant="outlined"
-                label={fieldName}
-                InputProps={{
-                    classes: {
-                        input: classes.widthAndHeight
-                    }
-                }}
-                FormHelperTextProps={{ style: styles.helper }}
+        <TextField
+            id={fieldName}
+            className={classes.root}
+            error={false}
+            helperText={isError ? errorMessage : ''}
+            value={value}
+            onChange={(e) => {eventValidation(fieldName,e)}}
+            variant="outlined"
+            label={fieldName}
+            InputProps={{
+                classes: {
+                    input: classes.widthAndHeight
+                }
+            }}
+            FormHelperTextProps={{ style: styles.helper }}
 
-                select
-            >
-                {_.map(options, (option) => <MenuItem key={option} value={option}>{option}</MenuItem>
-                )}
-            </TextField>
+            select
+        >
+            {_.map(options, (option) => <MenuItem key={option} value={option}>{option}</MenuItem>
+            )}
+        </TextField>
     );
 }
 

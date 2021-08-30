@@ -31,6 +31,9 @@
 
     &--box {
       display: flex;
+      @include breakpoint-medium-down {
+        flex-direction: column;
+      }
 
       .profile {
         margin: 0 1.5rem 2rem;

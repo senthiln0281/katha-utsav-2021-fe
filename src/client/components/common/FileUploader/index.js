@@ -12,7 +12,7 @@ const FileUploader = ({onFileUpload,buttonName,style}) => {
   const handleChange = event => {
     const fileUploaded = event.target.files[0];
 
-    onFileUpload(fileUploaded,event.target.value);
+    onFileUpload(fileUploaded,event.target.value,event);
   };
   return (
     <>
@@ -20,6 +20,7 @@ const FileUploader = ({onFileUpload,buttonName,style}) => {
         {buttonName}
       </Button>
       <input
+        id="file"
         type="file"
         ref={hiddenFileInput}
         onChange={handleChange}

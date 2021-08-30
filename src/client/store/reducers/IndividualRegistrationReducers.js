@@ -1,6 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState ={
+    showPopUp: false,
     IndividualRegistrationValidInfo:{
 
     },
@@ -46,6 +47,11 @@ const IndividualRegistrationReducer = (state = initialState, action) => {
             return {
                 ...state,
                 IndividualRegistrationErrorInfo: action.errorPayload
+            }
+        case actionTypes.IS_SHOW_POPUP:
+            return{
+                ...state,
+                showPopUp: action.showPopUp
             }
         default:
             return state;

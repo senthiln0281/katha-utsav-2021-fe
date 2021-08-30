@@ -5,20 +5,33 @@ import {
         Route,
         Switch,
 } from 'react-router-dom';
-
+import { connect } from 'react-redux';
+import _ from 'lodash';
 import IndividualRegistrationContainer from '../containers/IndividualRegistrationContainer';
+import HomePage from '../containers/HomeContainer';
 
-import HomePage from '../components/Home/Home';
+const AppContainer = (props) => {
+        return (
+                <Router>
+                        <Switch>
+                                {!props.showIndividualPopUp && <Route exact path="/" render={() => <div className='home-page'> <HomePage />  </div>} />}
+                                {props.showIndividualPopUp && <Route exact path="/" render={() => <IndividualRegistrationContainer />} />}
+                                <Route exact path="/payment" render={() => <div> Welcome To Payment Page </div>} />
+                        </Switch>
+                </Router>
+        );
+};
 
-const AppContainer = () => (
+const mapStateToProps = (state) => {
+        return {
+                showIndividualPopUp: state.IndividualRegistrationReducer.showPopUp
+        }
+};
 
-        <Router>
-                <Switch>
-                        <Route exact path="/" render={() => <div className='home-page'> <HomePage />  </div>} />
-                        <Route exact path="/Individual" render={() => <IndividualRegistrationContainer />} />
-                        <Route exact path="/payment" render={() => <div> Welcome To Payment Page </div>} />
-                </Switch>
-        </Router>
-);
 
-export default hot(module)(AppContainer);
+
+
+export default connect(
+        mapStateToProps,
+        null
+)(AppContainer);

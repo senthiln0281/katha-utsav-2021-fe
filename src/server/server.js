@@ -19,7 +19,6 @@ app.use(bodyParser.urlencoded({
 app.use('/public', express.static(publicPath, { redirect: false }));
 
 app.get('/api/healthy', (req, res) => {
-  console.log('welcome');
   res.status(200).json({ message: ' Web is healthy!'+ process.env.NODE_ENV});
 });
 
