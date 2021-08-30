@@ -294,7 +294,7 @@ const IndividualRegistration = (props) => {
                 {/*---Cross Mark---*/}
                 <Grid item container justifyContent="flex-end">
                     <Grid item component={Button} onClick={closePopUp} >
-                        <img alt src={crossMark} alt="crossmark" width="12" height="12" />
+                        <img alt src={crossMark} alt="crossmark" width="20" height="20" />
                     </Grid>
                 </Grid>
 
