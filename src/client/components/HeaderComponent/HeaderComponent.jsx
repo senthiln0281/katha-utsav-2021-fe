@@ -79,7 +79,7 @@ const useStyles = makeStyles(theme => ({
     },
     headerContainerMobile: {
         backgroundColor: "#FECB05",
-        padding: 0,
+        padding: "0 1rem",
         width: "100%",
 
     },
@@ -119,6 +119,9 @@ const useStyles = makeStyles(theme => ({
         color: "#98248D",
         fontWeight: "normal",
         fontSize: "18px"
+    },
+    cta:{
+        marginBottom:"10rem"
     }
 
 }));
@@ -127,7 +130,7 @@ const HeaderComponent = (props) => {
 
     const classes = useStyles();
     const theme = useTheme();
-    const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
+    const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
     const [openDrawer, setOpenDrawer] = useState(false);
     const [value, setValue] = useState(0);
 
@@ -232,7 +235,7 @@ const HeaderComponent = (props) => {
                     <Typography gutterBottom variant="body2" className={classes.styleFormat}>Search for Excellence in Creative <br /> Writing is here...</Typography>
                 </Grid>
 
-                <Grid item container alignItems="center" direction="column">
+                <Grid item container className={classes.cta} alignItems="center" direction="column">
                     <Grid item>
                         {<DropDownButton menuServiceProperties={menuServiceProperties} />}
                     </Grid>
@@ -251,7 +254,7 @@ const HeaderComponent = (props) => {
     return (
         <React.Fragment>
             <ElevationScroll>
-                {matchesXS ? drawer : tabs}
+                {matchesSM ? drawer : tabs}
             </ElevationScroll>
 
         </React.Fragment>

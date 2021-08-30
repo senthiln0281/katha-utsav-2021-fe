@@ -1,15 +1,15 @@
 .about-us {
   font-family: "Fredoka One";
-  padding: 0 2rem;
+  padding: 0 1rem;
   letter-spacing: 0;
+
+  @media (min-width: 1000px) {
+    padding: 0 2rem;
+  }
 
   @include breakpoint-xlarge {
     padding: 0 5rem;
 
-  }
-
-  @include breakpoint-medium-down {
-    padding: 0rem;
   }
 
   &__container {
@@ -23,7 +23,7 @@
     }
 
     .information {
-      width: 100%;
+      width: 90%;
       padding: 1rem;
 
       h5 {

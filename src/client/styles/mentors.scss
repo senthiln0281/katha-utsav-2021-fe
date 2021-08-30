@@ -1,6 +1,10 @@
 .mentors {
-  padding: 1rem 2rem;
+  padding: 1rem;
   background: #F3F0EA;
+
+  @media (min-width: 1000px) {
+    padding: 0 2rem;
+  }
 
   @include breakpoint-large-up {
     margin-top: -8rem;
@@ -31,7 +35,8 @@
 
     &--box {
       display: flex;
-      @include breakpoint-medium-down {
+
+      @media (max-width: 600px) {
         flex-direction: column;
       }
 
@@ -41,7 +46,11 @@
 
         img {
           @include breakpoint-large-down {
-            width: 20rem;
+            width: 16rem;
+          }
+
+          @media (max-width: 340px) {
+            width: 17rem;
           }
 
           @media screen and (min-width: 1500px) {
