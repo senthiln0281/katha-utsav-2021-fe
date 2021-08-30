@@ -51,7 +51,7 @@ const Process = () => {
         ];
     return (
         <React.Fragment>
-            <div className='process'>
+            <div id='process' className='process'>
                 <h3>Process</h3>
                 <div className='process__container'>
                     <div className='process__buttons'>

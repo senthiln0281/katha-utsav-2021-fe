@@ -16,7 +16,7 @@ const Profile = ({image, name, description}) => {
 const Mentors = () => {
     return (
         <React.Fragment>
-            <div className='mentors'>
+            <div id='mentors' className='mentors'>
                 <h3>Mentors</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis et sed nam sem tellus erat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis et sed nam sem tellus erat.Lorem ipsum dolor sit amet, consectetur </p>
                 <div className='mentors__container'>

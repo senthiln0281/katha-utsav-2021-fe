@@ -10,7 +10,7 @@ import Image7 from '../../assets/images/history-7.png';
 const KathaHistory = () => {
     return (
       <React.Fragment>
-          <div className='katha-history'>
+          <div id='katha-history' className='katha-history'>
               <h3> From Previous Years</h3>
               <section id="photos">
                   <img src={Image1} alt=""/>
