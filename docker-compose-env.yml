@@ -7,7 +7,7 @@ networks:
     name: ${TRAEFIK_NETWORK}
 
 services:
-  gcc_last_respects:
+  katha_utsav:
     image: ${REGISTRY}/${IMAGETAG}:${GO_REVISION}
     environment:
       SAMPLEENV: SAMPLEENV
