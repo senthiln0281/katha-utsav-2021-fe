@@ -16,7 +16,7 @@ const Information = ({image, header, content}) => {
 const AboutKatha = () => {
   return (
       <React.Fragment>
-          <div className='about-us'>
+          <div id="about-us" className='about-us'>
               <h3>About Katha Utsav 21</h3>
               <div className='about-us__container'>
                   <Information image={Question} header='Where is Katha Utsav taking place?' content='Katha Utsav 2021 completely online. This time Utsav is using a virtual environment, which allows attendees to view keynote sessions and participate in small-group workshops.' />

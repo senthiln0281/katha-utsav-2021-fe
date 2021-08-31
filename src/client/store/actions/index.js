@@ -1,6 +1,3 @@
-export {
-    makeInitiCall
-} from './hello'
 
 export {
     validate,
@@ -8,3 +5,10 @@ export {
     validateFail,
     showPopUp
 } from './IndividualRegistrationAction'
+
+export {
+    validateSchoolStepOne,
+    validateSuccessSchoolStepOne,
+    validateFailSchoolStepOne,
+    showPopUpSchool
+} from './SchoolRegistrationStepOneAction'
