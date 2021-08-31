@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect} from 'react';
 
 const Timer = () => {
 
     const calculateTimeLeft = () => {
-        const difference = +new Date('08/31/2021') - +new Date();
+        const difference = +new Date('10/31/2021') - +new Date();
 
         let timeLeft = {};
 
