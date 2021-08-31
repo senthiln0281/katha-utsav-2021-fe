@@ -1,21 +1,27 @@
-FROM openjdk:11 as builder
-COPY . /home/app
+FROM node:14.15.4-stretch-slim as build
 WORKDIR /home/app
-
-
-RUN apt install -y curl \
-    && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
-    && apt install -y nodejs g++ gcc make python \
-    && curl -L https://www.npmjs.com/install.sh | sh \
-    && npm install \
-    && npm rebuild node-sass
-
+COPY package*.json ./
+RUN npm install --only=production
+RUN cp -R node_modules production_node_modules
+RUN npm install
+COPY . .
 RUN npm run build
-
-FROM node:14.17.5-alpine
-COPY --from=builder /home/app/dist /home/app/dist
-COPY --from=builder ["/home/app/src/server", "/home/app/package.json", "/home/app/"]
+RUN npm rebuild node-sass
+FROM node:14.15.4-stretch-slim
+COPY --from=build /home/app/dist/ /home/app/dist/
+COPY --from=build ["/home/app/src/server", "/home/app/package.json", "/home/app/"]
+COPY --from=build /home/app/package.json/ /home/app/
+COPY --from=build /home/app/package-lock.json/ /home/app/
+COPY --from=build /home/app/public/ /home/app/public/
+COPY --from=build /home/app/production_node_modules/ /home/app/node_modules/
 WORKDIR /home/app
-RUN npm install --production
-ENTRYPOINT node server.js
-EXPOSE 80
+RUN chown -R node /home/app
+USER node
+EXPOSE 9001
+CMD npm run server
+
+
+
+
+
+
