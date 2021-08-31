@@ -45,6 +45,7 @@ const useStyles = makeStyles(theme => ({
     UploadFile: {
         width: 360,
         height: 200,
+        textTransform: "none",
         backgroundColor: "#FDF6D8",
         "&:hover": {
             backgroundColor: "#FDF6D8"
@@ -61,6 +62,7 @@ const useStyles = makeStyles(theme => ({
         lineHeight: '24px',
         fontWeight: 'bold',
         fontSize: "0.65rem",
+        textTransform: "none",
         [theme.breakpoints.down("sm")]: {
             width: 320
         },
@@ -203,6 +205,7 @@ const IndividualRegistration = (props) => {
                 let emailValid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(event.target.value);
                 if (_.isNull(event.target.value) || _.isEmpty(event.target.value) || !emailValid) {
                     setEmailIdMessage("Please enter a valid email")
+                    setEmailId(event.target.value);
                 }
                 else {
                     setEmailId(event.target.value);
@@ -212,6 +215,7 @@ const IndividualRegistration = (props) => {
             case 'Name':
                 if (_.isEmpty(event.target.value) || _.isNull(event.target.value)) {
                     setNameMessage("Please enter a valid name");
+                    setName(event.target.value);
                 }
                 else {
                     setName(event.target.value);
@@ -223,6 +227,7 @@ const IndividualRegistration = (props) => {
 
                 if (_.isEmpty(event.target.value) || _.isNull(event.target.value) || !schoolValid) {
                     setSchoolMessage("Please enter a valid school");
+                    setSchool(event.target.value);
                 }
                 else {
                     setSchool(event.target.value);
@@ -233,6 +238,7 @@ const IndividualRegistration = (props) => {
                 let phoneNumberValid = /^\d+$/.test(event.target.value);
                 if (_.isNull(event.target.value) || _.isEmpty(event.target.value) || !phoneNumberValid) {
                     setPhoneNumberMessage("Please enter a valid phoneNumber");
+                    setPhoneNumber(event.target.value);
                 }
                 else {
                     setPhoneNumber(event.target.value);
@@ -243,6 +249,7 @@ const IndividualRegistration = (props) => {
 
                 if (_.isEmpty(event.target.value) || !_.includes(["Fiction", "Non-Fiction", "Poetry"], event.target.value)) {
                     setStoryCategoryMessage("Please enter a valid StoryCategory");
+                    setStoryCategory(event.target.value);
                 }
                 else {
                     setStoryCategory(event.target.value);
@@ -252,6 +259,7 @@ const IndividualRegistration = (props) => {
             case 'Class':
                 if (_.isEmpty(event.target.value) || !_.includes(["4 to 6", "7 to 9", "10 to 12"], event.target.value)) {
                     setClassMessage("Please enter a valid Class");
+                    setClassStandard(event.target.value);
                 }
                 else {
                     setClassStandard(event.target.value);
@@ -270,6 +278,7 @@ const IndividualRegistration = (props) => {
                 let cityValid = /^[a-zA-Z]+$/.test(event.target.value);
                 if (_.isEmpty(event.target.value) || _.isNull(event.target.value) || !cityValid) {
                     setCityMessage("Please Provide a valid city");
+                    setCity(event.target.value);
                 }
                 else {
                     setCity(event.target.value);
@@ -317,6 +326,7 @@ const IndividualRegistration = (props) => {
                                     <Typography gutterBottom variant="body1" style={{ fontSize: "1rem" }} className={classes.RegistrationForm}>Student Details</Typography>
                                 </Grid>
 
+
                                 <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
                                     <InputField errorMessage={nameMessage} isError={nameMessage.length > 0} fieldName={"Name"} onChangeFunc={setName} eventValidation={IndividualRegistrationValidation} value={name} />
                                 </Grid>
@@ -349,6 +359,7 @@ const IndividualRegistration = (props) => {
                                     <Typography align="left" gutterBottom variant="body1" style={{ fontSize: "0.75rem" }} className={classes.errorMessage}>{fileDataMessage}</Typography>
                                 </Grid>
 
+
                                 <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
                                     <Typography align="left" gutterBottom variant="body1" style={{ fontSize: "0.75rem" }} className={classes.supportedDocument}>Supported Document types: docx,doc, pdf, jpg, jpeg,png</Typography>
                                 </Grid>
@@ -368,7 +379,6 @@ const IndividualRegistration = (props) => {
                 </Grid>}
             </Grid>
         </Dialog>
-
 
     );
 };

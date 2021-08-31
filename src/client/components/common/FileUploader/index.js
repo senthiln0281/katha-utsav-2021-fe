@@ -1,8 +1,10 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 
-
-const FileUploader = ({onFileUpload,buttonName,style}) => {
+//Sample Usage
+//<FileUploader onFileUpload={callBackToStoreFileData} buttonName="FileUpload"
+//style={classes.Style} acceptedFormat=".jpg,.png"/>
+const FileUploader = ({onFileUpload,buttonName,style,acceptedFormat}) => {
   const hiddenFileInput = React.useRef(null);
 
   const handleClick = ()  => {
@@ -11,7 +13,6 @@ const FileUploader = ({onFileUpload,buttonName,style}) => {
  
   const handleChange = event => {
     const fileUploaded = event.target.files[0];
-
     onFileUpload(fileUploaded,event.target.value,event);
   };
   return (
@@ -25,6 +26,7 @@ const FileUploader = ({onFileUpload,buttonName,style}) => {
         ref={hiddenFileInput}
         onChange={handleChange}
         style={{display: 'none'}}
+        accept={acceptedFormat}
       />
     </>
   );
