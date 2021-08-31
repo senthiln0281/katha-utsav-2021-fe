@@ -1,11 +1,13 @@
-import helloReducer from './hello';
 import IndividualRegistrationReducer from './IndividualRegistrationReducers';
+import SchoolRegistrationStepOneReducer from './SchoolRegistration.StepOne.Reducer';
+import SchoolRegistrationReducer from './SchoolRegistrationReducer';
 import { combineReducers } from 'redux';
 
 
 const RootReducer = combineReducers({
-    helloReducer,
-    IndividualRegistrationReducer
+    IndividualRegistrationReducer,
+    SchoolRegistrationStepOneReducer,
+    SchoolRegistrationReducer
   });
   
   export default RootReducer;

@@ -8,6 +8,7 @@ const useStyles = makeStyles(theme => ({
         color: "#ffffff",
         width: 360,
         height: 40,
+        textTransform: "none",
         [theme.breakpoints.down("sm")]: {
             width: 320
         },
