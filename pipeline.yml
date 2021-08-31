@@ -9,3 +9,23 @@ max_cpu: 1
 traefik_application_port: 3200
 traefik_https_enable: true
 traefik_ssl_provider: letsencrypt
+vault:
+  enabled: true
+  name: katha-utsav
+  envs:
+    - NODE_ENV
+    - DB_USER
+    - DB_PWD
+    - DB_NAME
+    - DB_HOST
+    - DB_SCHEMA
+    - DB_PORT
+    - JWT_TOKEN_SECRET
+    - AWS_IAM_ACCOUNT_ID
+    - AWS_IAM_POOL_ID
+    - AWS_IAM_REGION
+    - AWS_IAM_ROLE_ARN
+    - AWS_IAM_ROLE_SESSION_NAME
+    - AWS_QS_CGL_DASHBOARD_ID
+    - AWS_QS_DASHBOARD_ID
+    - AWS_QS_REGION
