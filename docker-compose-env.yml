@@ -1,0 +1,22 @@
+version: "3.7"
+
+networks:
+  default:
+  traefik:
+    external: true
+    name: ${TRAEFIK_NETWORK}
+
+services:
+  gcc_last_respects:
+    image: ${REGISTRY}/${IMAGETAG}:${GO_REVISION}
+    environment:
+      SAMPLEENV: SAMPLEENV
+    networks:
+      - default
+      - traefik
+    deploy:
+      labels:
+        - traefik.frontend.rule=${TRAEFIK_FRONTEND_HOST}
+        - traefik.enable=true
+        - traefik.port=${TRAEFIK_PORT}
+        - traefik.docker.network=${TRAEFIK_NETWORK}
