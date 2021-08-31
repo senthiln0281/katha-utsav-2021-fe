@@ -28,9 +28,9 @@ module.exports = {
       appconstants: `${srcPath}/appconstants/`,
       components: `${srcPath}/components/`,
       containers: `${srcPath}/containers/`,
-      state: `${srcPath}/state/`,
-      features: `${srcPath}/state/features/`,
+      store: `${srcPath}/store/`,
       helpers: `${srcPath}/helpers/`,
+      assets: `${srcPath}/assets/`,
     },
   },
   module: {
@@ -104,8 +104,8 @@ module.exports = {
       },
     ]}),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
+      filename: "static/[name].css",
+      chunkFilename: "static/[id].css"
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
