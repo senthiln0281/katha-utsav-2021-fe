@@ -46,6 +46,8 @@
 
       @media (max-width: 600px) {
         width: 20rem;
+        height: 7rem;
+        padding: 0;
       }
 
       @media (max-width: 340px) {
@@ -101,6 +103,7 @@
   &__content {
     background-color: #FEDB50;
     padding: 2rem;
+    max-width: 35rem;
 
     @include breakpoint-medium-down {
       width: 26rem;
@@ -123,6 +126,13 @@
       letter-spacing: 1px;
     }
 
+    .context-header {
+      font-size: 1.25rem;
+      font-family: Poppins;
+      font-weight: 400;
+      line-height: 1.5rem;
+    }
+
     ul {
       list-style: disc;
 
@@ -133,6 +143,19 @@
         line-height: 1.5rem;
         letter-spacing: 1px;
       }
+    }
+  }
+
+  .small {
+    @include breakpoint-large-up {
+      display: none;
+    }
+  }
+
+  .desktop {
+    background-color: #FEDB50;
+    @include breakpoint-medium-down {
+      display: none;
     }
   }
 }
