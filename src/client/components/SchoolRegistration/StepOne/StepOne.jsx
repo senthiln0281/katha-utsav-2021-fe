@@ -84,17 +84,12 @@ const StepOne = (props) => {
 
     const [schoolName, setSchoolName] = useState('');
     const [schoolNameMessage, setSchoolNameMessage] = useState(props.schoolNameMessage);
-
     const [city, setCity] = useState('');
     const [cityMessage, setCityMessage] = useState(props.cityMessage);
-    
-
     const [schoolCoordinatorName, setSchoolCoordinatorName] = useState('');
     const [schoolCoordinatorNameMessage, setSchoolCoordinatorNameMessage] = useState(props.schoolCoordinatorNameMessage);
-
     const [schoolEmailId, setSchoolEmailId] = useState('');
     const [emailIdMessage, setEmailIdMessage] = useState(props.emailIdMessage);
-
     const [phoneNumber, setPhoneNumber] = useState('');
     const [phoneNumberMessage, setPhoneNumberMessage] = useState(props.phoneNumberMessage);
 
@@ -103,19 +98,16 @@ const StepOne = (props) => {
         let isError = false
         let emailValid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(schoolEmailId);
         let phoneNumberValid = /^\d+$/.test(phoneNumber);
-        let schoolValid = /^[a-zA-Z]+$/.test(schoolName);
-        let nameValid = /^[a-zA-Z]+$/.test(schoolCoordinatorName);
-        let cityValid  = /^[a-zA-Z]+$/.test(city);
       
         if (_.isNull(schoolEmailId) || _.isEmpty(schoolEmailId) || !emailValid) {
           setEmailIdMessage("Please enter a valid email")
           isError = true;
         }
-        if (_.isNull(schoolName) || _.isNull(schoolName) || !schoolValid) {
+        if (_.isNull(schoolName) || _.isNull(schoolName)) {
           setSchoolNameMessage("Please enter a valid school name")
           isError = true;
         }
-        if (_.isEmpty(schoolCoordinatorName) || _.isNull(schoolCoordinatorName) || !nameValid) {
+        if (_.isEmpty(schoolCoordinatorName) || _.isNull(schoolCoordinatorName)) {
           setSchoolCoordinatorNameMessage("Please enter a valid school Coordinator name")
           isError = true;
         }
@@ -124,7 +116,7 @@ const StepOne = (props) => {
           isError = true;
         }
       
-        if (_.isEmpty(city) || _.isNull(city) || !cityValid) {
+        if (_.isEmpty(city) || _.isNull(city)) {
           setCityMessage ("Please Provide a valid city")
           isError = true;
         }
@@ -176,9 +168,7 @@ const StepOne = (props) => {
                 }
                 break;
             case 'School Name':
-                let schoolValid = /^[a-zA-Z]+$/.test(event.target.value);
-
-                if (_.isEmpty(event.target.value) || _.isNull(event.target.value) || !schoolValid) {
+                if (_.isEmpty(event.target.value) || _.isNull(event.target.value)) {
                     setSchoolNameMessage("Please enter a valid school");
                     setSchoolName(event.target.value);
                 }
@@ -199,8 +189,7 @@ const StepOne = (props) => {
                 }
                 break;
             case 'City':
-                let cityValid = /^[a-zA-Z]+$/.test(event.target.value);
-                if (_.isEmpty(event.target.value) || _.isNull(event.target.value) || !cityValid) {
+                if (_.isEmpty(event.target.value) || _.isNull(event.target.value)) {
                     setCityMessage("Please Provide a valid city");
                     setCity(event.target.value)
                 }

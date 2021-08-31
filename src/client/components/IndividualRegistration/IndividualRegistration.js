@@ -129,8 +129,6 @@ const IndividualRegistration = (props) => {
         let errorObject = { emailError: "", nameError: "", phoneNumberError: "", SchoolError: "", CityError: "", ClassError: "", StoryCategoryError: "", fileError: "", isError: false }
         let emailValid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(emailId);
         let phoneNumberValid = /^\d+$/.test(phoneNumber);
-        let schoolValid = /^[a-zA-Z]+$/.test(school);
-        let cityValid = /^[a-zA-Z]+$/.test(city);
 
         if (_.isNull(emailId) || _.isEmpty(emailId) || !emailValid) {
             setEmailIdMessage("Please enter a valid email")
@@ -140,7 +138,7 @@ const IndividualRegistration = (props) => {
             setNameMessage("Please enter a valid name");
             errorObject.isError = true;
         }
-        if (_.isEmpty(School) || _.isNull(School) || !schoolValid) {
+        if (_.isEmpty(School) || _.isNull(School)) {
             setSchoolMessage("Please enter a valid school");
             errorObject.isError = true;
         }
@@ -160,7 +158,7 @@ const IndividualRegistration = (props) => {
             setfileDataMessage("Please Upload file less than 10mb");
             errorObject.isError = true;
         }
-        if (_.isEmpty(city) || _.isNull(city) || !cityValid) {
+        if (_.isEmpty(city) || _.isNull(city)) {
             setCityMessage("Please enter a valid Class");
             errorObject.isError = true;
         }
@@ -223,9 +221,7 @@ const IndividualRegistration = (props) => {
                 }
                 break;
             case 'School':
-                let schoolValid = /^[a-zA-Z]+$/.test(event.target.value);
-
-                if (_.isEmpty(event.target.value) || _.isNull(event.target.value) || !schoolValid) {
+                if (_.isEmpty(event.target.value) || _.isNull(event.target.value)) {
                     setSchoolMessage("Please enter a valid school");
                     setSchool(event.target.value);
                 }
@@ -275,8 +271,7 @@ const IndividualRegistration = (props) => {
                 }
                 break;
             case 'City':
-                let cityValid = /^[a-zA-Z]+$/.test(event.target.value);
-                if (_.isEmpty(event.target.value) || _.isNull(event.target.value) || !cityValid) {
+                if (_.isEmpty(event.target.value) || _.isNull(event.target.value)) {
                     setCityMessage("Please Provide a valid city");
                     setCity(event.target.value);
                 }
@@ -325,7 +320,6 @@ const IndividualRegistration = (props) => {
                                 <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
                                     <Typography gutterBottom variant="body1" style={{ fontSize: "1rem" }} className={classes.RegistrationForm}>Student Details</Typography>
                                 </Grid>
-
 
                                 <Grid item style={{ width: matchesXS ? 220 : matchesSM ? 320 : "inherit" }}>
                                     <InputField errorMessage={nameMessage} isError={nameMessage.length > 0} fieldName={"Name"} onChangeFunc={setName} eventValidation={IndividualRegistrationValidation} value={name} />

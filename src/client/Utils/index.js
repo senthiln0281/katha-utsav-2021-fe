@@ -52,13 +52,13 @@ export const IndividualRegistrationValidation = (name, emailId, phoneNumber, Sch
 
 export const SchoolRegistrationStepOneValidation = (schoolName,emailId,phoneNumber,schoolCoordinatorName,city) => {
   let errorObject = {   schoolNameError: "", emailIdError:"", phoneNumberError:"", schoolCoordinatorNameError:"", cityError:"", isError: false }
-  //let emailValid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(emailId);
+  let emailValid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(emailId);
   let phoneNumberValid = /^\d+$/.test(phoneNumber);
   let schoolValid = /^[a-zA-Z]+$/.test(schoolName);
   let nameValid = /^[a-zA-Z]+$/.test(schoolCoordinatorName);
   let cityValid  = /^[a-zA-Z]+$/.test(city);
 
-  if (_.isNull(emailId) || _.isEmpty(emailId)) {
+  if (_.isNull(emailId) || _.isEmpty(emailId) || !emailValid) {
     errorObject.emailIdError = "Please enter a valid email";
     errorObject.isError = true;
   }
