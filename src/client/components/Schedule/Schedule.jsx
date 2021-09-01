@@ -8,32 +8,43 @@ const useStyles = makeStyles(theme => ({
     schedule: {
         fontFamily: 'Fredoka One',
         backgroundColor: "#F3F0EA",
-        padding: "0 80px"
+        padding: "0 80px",
+        [theme.breakpoints.down("xs")]: {
+            padding: "0 18px",
+        }
     },
     header: {
         fontSize: "48px",
         color: "#18191F",
-        paddingTop: "86px"
+        paddingTop: "86px",
+        [theme.breakpoints.down("xs")]: {
+            paddingTop: "42px",
+        }
     },
     description: {
-        fontWeight: 400,
+        fontFamily: "Poppins",
+        fontWeight: "normal",
         color: "#18191F",
         fontSize: "16px",
+        lineHeight: "26px",
         marginTop: "89px",
-        paddingBottom: "133px"
+        paddingBottom: "133px",
+        [theme.breakpoints.down("xs")]: {
+            marginTop: "28px",
+            paddingBottom: "94px",
+        }
     },
     events : {
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center"
-
     }
 }));
 
 const Events = [
     {
         date: "31",
-        month: "August",
+        month: "Aug",
         phase: 1,
         text: "Text"
     },
@@ -80,7 +91,7 @@ const Schedule = () => {
                     })}
                 </div>
                 <div className={classes.description}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis et sed nam sem tellus erat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis et sed nam sem tellus erat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis et sed nam sem tellus erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis et sed nam sem tellus erat.Lorem ipsum dolor si
+                    <b>Lorem ipsum</b> dolor sit amet, consectetur adipiscing elit. Mattis et sed nam sem tellus erat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis et sed nam sem tellus erat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis et sed nam sem tellus erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis et sed nam sem tellus erat.Lorem ipsum dolor si
                 </div>
             </div>
         </React.Fragment>

@@ -5,10 +5,13 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
     event: {
-        fontFamily: 'Fredoka One',
+        fontFamily: "Poppins",
         backgroundColor: "#F3F0EA",
         marginTop: "68px",
-        padding: "0 40px"
+        padding: "0 40px",
+        [theme.breakpoints.down("xs")]: {
+            marginTop: "52px",
+        }
     },
     date: {
         display: "flex",
@@ -17,23 +20,26 @@ const useStyles = makeStyles(theme => ({
         alignItems: "baseline"
     },
     number: {
-        marginRight: "24px",
+        marginRight: "18px",
         fontSize: "72px"
-
     },
     month :{
         fontSize: "36px"
-
     },
     phase: {
+        color: "#18191F",
+        fontStyle: "normal",
+        lineHeight: "28px",
         textAlign: "center",
         fontWeight: "500",
         fontSize: "18px"
     },
     description :{
+        fontWeight: "normal",
+        fontSize: "16px",
+        lineHeight: "26px",
         textAlign: "center",
-        fontWeight: "400",
-        fontSize: "16px"
+        color: "#18191F"
     }
 }));
 
@@ -50,7 +56,7 @@ const Event = ({data}) => {
                     </div>
                     <div  className={classes.month}>
                         {data.month}
-                    </div>                    
+                    </div>
                 </div>
                 <div className={classes.phase}>Phase #{data.phase}</div>
 
